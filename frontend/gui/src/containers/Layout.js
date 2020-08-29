@@ -1,23 +1,25 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu, Breadcrumb, } from "antd";
 
 const { Header, Content, Footer } = Layout;
 
 const CustomLayout = props => {
   return (
-    <Layout className="layout">
-      <Header>
-        <div className="logo" />
+    <Layout className="layout" style={{backgroundColor: 'rgba(255, 255, 255, 0.0)', border: 0 }}>
+      <Header style={{backgroundColor: 'rgba(255, 255, 255, 0.0)', border: 0 }}>
+        <div className="logo" style={{float:"left" , size :"80px" }}/>
+        <a>EXTRA SHIFT MANAGER</a>
         <Menu
-          theme="dark"
+          theme="light"
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          style={{ lineHeight: "64px" }}
+          defaultSelectedKeys={["1"]}
+          style={{ lineHeight: "54px" , float:'right' }}
         >
           <Menu.Item key="1">Home</Menu.Item>
           <Menu.Item key="2">Extra</Menu.Item>
           <Menu.Item key="3">Courses</Menu.Item>
+          <Menu.Item key="4">Register</Menu.Item>
         </Menu>
       </Header>
       <Content style={{ padding: "0 50px" }}>
