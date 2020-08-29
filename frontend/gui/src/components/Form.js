@@ -28,7 +28,7 @@ class CustomForm extends React.Component {
       
           .then(res => message.success("Data is Successfuly added" ))
           .catch(error => message.error("somethings is wrong")&& console.log(error));
-
+      
       case 'put':
         return axios.put(`http://127.0.0.1:8000/api/${articleID}/`, {
             title: title,
@@ -37,7 +37,7 @@ class CustomForm extends React.Component {
           })
           .then(res => message.success("Data is Successfuly updated" ))
           .catch(error => message.error("somethings is wrong")&& console.log(error));
-
+      
         break;
       default:
 

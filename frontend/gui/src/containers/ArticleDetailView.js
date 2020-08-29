@@ -1,4 +1,5 @@
 import {
+  message,
   Button,
   Card
 } from "antd";
@@ -23,8 +24,9 @@ class ArticleDetail extends React.Component {
 
   handleDelete = (event) => {
     const articleID = this.props.match.params.articleID;
-    axios;
-    delete(`http://127.0.0.1:8000/api/${articleID}/`);
+    axios.delete (`http://127.0.0.1:8000/api/${articleID}/`)
+    .then(res => message.erorr("Data is Successfuly deleted" ))
+          .catch(error => message.error("somethings is wrong")&& console.log(error));
     this.props.history.push('/');
     this.forceUpdate();
   }
