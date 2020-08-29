@@ -24,11 +24,10 @@ class CustomForm extends React.Component {
             title: title,
             content: content,
             manager: manager
-          })
-
-          .then(res => console.log(res) && message.success("its okay"))
-
-          .catch(message.error('This is an error message'));
+        })
+      
+          .then(res => message.success("Data is Successfuly added" ))
+          .catch(error => message.error("somethings is wrong")&& console.log(error));
 
       case 'put':
         return axios.put(`http://127.0.0.1:8000/api/${articleID}/`, {
@@ -36,8 +35,8 @@ class CustomForm extends React.Component {
             content: content,
             manager: manager
           })
-          .then(res => console.log(res))
-          .catch(error => console.err(error));
+          .then(res => message.success("Data is Successfuly updated" ))
+          .catch(error => message.error("somethings is wrong")&& console.log(error));
 
         break;
       default:
@@ -80,10 +79,10 @@ class CustomForm extends React.Component {
       Button type = "primary"
       htmlType = "Submit" > {
         this.props.btnText
-      } < /Button> < /
-      FormItem > <
-      /Form> < /
-      div >
+      } < /Button> <
+      /FormItem> <
+      /Form> <
+      /div>
     );
   }
 }
