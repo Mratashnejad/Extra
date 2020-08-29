@@ -19,7 +19,7 @@ class CustomForm extends React.Component {
     const manager = event.target.elements.manager.value;
     const datetime = event.target.elements.datetime.value;
     const quantity = event.target.elements.quantity.value;
-    const gender = event.target.elemetns.gender.value;
+    const gender = event.target.elements.gender.value;
     const lable = event.target.elements.lable.value;
     const language = event.target.elements.language.value;
 
@@ -42,13 +42,13 @@ class CustomForm extends React.Component {
 
       case 'put':
         return axios.put(`http://127.0.0.1:8000/api/${articleID}/`, {
-          title: title,
-          manager: manager,
-          datetime: datetime,
-          quantity: quantity,
-          gender: gender,
-          lable: lable,
-          language: language,
+            title: title,
+            manager: manager,
+            datetime: datetime,
+            quantity: quantity,
+            gender: gender,
+            lable: lable,
+            language: language,
           })
           .then(res => message.success("Data is Successfuly updated"))
           .catch(error => message.error("somethings is wrong") && console.log(error));
@@ -77,23 +77,57 @@ class CustomForm extends React.Component {
       placeholder = "Enter title here :" / >
       <
       /FormItem> <
-      FormItem label = "Content" >
+      FormItem label = "Manager" >
       <
-      Input name = 'content'
-      placeholder = "Enter some content :" / >
+      Input name = 'manager'
+      placeholder = "Enter manager Name" / >
       <
-      /FormItem> 
-      <FormItem label = "Manager" >
-      <Input name = 'manager'
-      placeholder = "Enter manager name :" / >
-      </FormItem> 
+      /FormItem> <
+      FormItem label = "Date and Time" >
+      <
+      Input name = 'datetime'
+      placeholder = "Enter datetime" / >
+      <
+      /FormItem>
       
-      <FormItem label = "Manager" >
-      <Input name = 'manager'
-      placeholder = "Enter manager name :" / >
-      </FormItem>
+      <
+      FormItem label = "quantity" >
+      <
+      Input name = 'quantity'
+      placeholder = "Enter quantity" / >
+      <
+      /FormItem>
+
+
+      <
+      FormItem label = "gender" >
+      <
+      Input name = 'gender'
+      placeholder = "Enter gender" / >
+      <
+      /FormItem>
+
+                
+      <
+      FormItem label = "lable" >
+      <
+      Input name = 'lable'
+      placeholder = "Enter lable" / >
+      <
+      /FormItem>
+
+      <
+      FormItem label = "language" >
+      <
+      Input name = 'language'
+      placeholder = "Enter language" / >
+      <
+      /FormItem>
+                
       
-      <FormItem >
+      
+      <
+      FormItem >
       <
       Button type = "primary"
       htmlType = "Submit" > {

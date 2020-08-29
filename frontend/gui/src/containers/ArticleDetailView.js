@@ -24,9 +24,9 @@ class ArticleDetail extends React.Component {
 
   handleDelete = (event) => {
     const articleID = this.props.match.params.articleID;
-    axios.delete (`http://127.0.0.1:8000/api/${articleID}/`)
-    .then(res => message.erorr("Data is Successfuly deleted" ))
-          .catch(error => message.error("somethings is wrong")&& console.log(error));
+    axios.delete(`http://127.0.0.1:8000/api/${articleID}/`)
+      .then(res => message.erorr("Data is Successfuly deleted"))
+      .catch(error => message.error("somethings is wrong") && console.log(error));
     this.props.history.push('/');
     this.forceUpdate();
   }
@@ -38,15 +38,16 @@ class ArticleDetail extends React.Component {
       Card title = {
         this.state.article.title
       } >
+        <p>Manager Name :{this.state.article.manager} </p>
+        <p>Date & Time :{this.state.article.datetime} </p>
+        <p>quantity  :{this.state.article.quantity} </p>
+        <p>gender  :{this.state.article.gender} </p>
+        <p>lable  :{this.state.article.lable} </p>
+        <p>language  :{this.state.article.language} </p>
+       </Card > 
       <
-      p > {
-        this.state.article.content
-      } < /p> < /
-      Card > <
       br / >
-      <
-      h2 > Update this article < /h2> <
-      CustomForm requestType = "put"
+      <CustomForm requestType = "put"
       articleID = {
         this.state.article.id
       }

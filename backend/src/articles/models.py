@@ -4,7 +4,7 @@ from django.db import models
 class Article(models.Model):
     title = models.CharField(max_length=120)
     manager = models.CharField(max_length=120)
-    datetime = models.DateTimeField()  # tarikh
+    datetime = models.TextField()  # tarikh
     quantity = models.IntegerField(default=1)  # tedad
     gender = models.CharField(max_length=50)  # jensiat
     lable = models.CharField(max_length=50)  # zarorat
