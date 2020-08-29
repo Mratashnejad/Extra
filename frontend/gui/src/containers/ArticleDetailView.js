@@ -39,8 +39,8 @@ class ArticleDetail extends React.Component {
       <
       p > {
         this.state.article.content
-      } < /p> <
-      /Card> <
+      } < /p> < /
+      Card > <
       br / >
       <
       h2 > Update this article < /h2> <
@@ -55,8 +55,8 @@ class ArticleDetail extends React.Component {
       } >
       <
       Button type = "danger"
-      htmlType = "submit" > Delete < /Button> <
-      /form> <
+      htmlType = "submit" > Delete < /Button> < /
+      form > <
       /div>
     );
   }
