@@ -3,8 +3,13 @@ from django.db import models
 
 class Article(models.Model):
     title = models.CharField(max_length=120)
-    content = models.TextField()
-    manager = models.TextField()
+    manager = models.CharField(max_length=120)
+    datetime = models.DateTimeField()  # tarikh
+    quantity = models.IntegerField(default=1)  # tedad
+    gender = models.CharField(max_length=50)  # jensiat
+    lable = models.CharField(max_length=50)  # zarorat
+    language = models.CharField(max_length=50)  # zaban
+    # slug = models.SlugField()  # onvaneLink
     
 
     def __str__(self):
