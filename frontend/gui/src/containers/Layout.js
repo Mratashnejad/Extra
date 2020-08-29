@@ -32,6 +32,7 @@ const CustomLayout = props => {
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>
+        
         Mr.atashnejad ©2018 Created by 
       </Footer>
     </Layout>
