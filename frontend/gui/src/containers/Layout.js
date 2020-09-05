@@ -18,8 +18,10 @@ const CustomLayout = props => {
         >
           <Menu.Item key="1">Home</Menu.Item>
           <Menu.Item key="2">Extra</Menu.Item>
-          <Menu.Item key="3">Courses</Menu.Item>
-          <Menu.Item key="4">Register</Menu.Item>
+          <Menu.Item key="3">
+            <Link to="/courses">Courses</Link></Menu.Item>
+          <Menu.Item key="4">
+            <Link to="/login">Login</Link></Menu.Item>
         </Menu>
       </Header>
       <Content style={{ padding: "0 50px" }}>
