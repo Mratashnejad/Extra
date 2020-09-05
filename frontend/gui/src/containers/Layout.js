@@ -27,8 +27,8 @@ const CustomLayout = props => {
             <Link to="/login">Login</Link></Menu.Item>
               
           }
-          <Menu.Item key="1">Home</Menu.Item>
-          <Menu.Item key="2">Extra</Menu.Item>
+          <Menu.Item key="1"><Link to ="/">Home</Link></Menu.Item>
+          <Menu.Item key="2"> <Link to="/extra">Extra</Link></Menu.Item>
           <Menu.Item key="3">
             <Link to="/courses">Courses</Link></Menu.Item>
           
