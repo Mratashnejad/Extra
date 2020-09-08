@@ -6,7 +6,7 @@ import { enquireScreen } from 'enquire-js';
 // import Banner from './Banner';
 // import Page1 from './Page1';
 // import Page2 from './Page2';
-// import Footer from './Footer';
+import Footer from './Footer';
 
 import '../static/style';
 
@@ -38,7 +38,7 @@ class Home extends React.PureComponent {
             <Page1 isMobile={this.state.isMobile} />
             <Page2 /> */}
           </div>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </DocumentTitle>
     );

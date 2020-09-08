@@ -48,10 +48,10 @@ class CustomLayout extends  React.Component {
             { this.props.children }
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>
+        {/* <Footer style={{ textAlign: "center" }}>
           
           Mr.atashnejad ©2018 Created by 
-        </Footer>
+        </Footer> */}
       </Layout>
     );
 
