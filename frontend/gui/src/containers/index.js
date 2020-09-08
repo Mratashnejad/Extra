@@ -7,7 +7,8 @@ import { enquireScreen } from 'enquire-js';
 // import Page1 from './Page1';
 // import Page2 from './Page2';
 // import Footer from './Footer';
-// import './static/style';
+
+import '../static/style';
 
 let isMobile;
 
@@ -28,10 +29,11 @@ class Home extends React.PureComponent {
   }
   render() {
     return (
-      <DocumentTitle title="Ant Design - pro">
+      <DocumentTitle title="Vivaro Dealers - Home">
         <div>
           {/* <Header isMobile={this.state.isMobile} /> */}
           <div className="home-wrapper">
+            test
             {/* <Banner isMobile={this.state.isMobile} />
             <Page1 isMobile={this.state.isMobile} />
             <Page2 /> */}

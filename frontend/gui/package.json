@@ -8,6 +8,7 @@
     "axios": "^0.18.0",
     "enquire-js": "^0.2.1",
     "react": "^16.13.1",
+    "react-document-title": "^2.0.3",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^4.3.1",
