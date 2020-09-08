@@ -1,8 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { Form, Icon, Input, Button, Spin } from 'antd';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as actions from '../store/actions/auth';
+import 'antd/dist/antd.css';
+import './Login.less';
 
 const FormItem = Form.Item;
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
@@ -29,7 +31,8 @@ class NormalLoginForm extends React.Component {
 
     const { getFieldDecorator } = this.props.form;
     return (
-        <div>
+            <div className='Login-form'>
+                
             {errorMessage}
             {
                 this.props.loading ?
@@ -38,9 +41,11 @@ class NormalLoginForm extends React.Component {
 
                 :
 
-                <Form onSubmit={this.handleSubmit} className="login-form">
+                <Form onSubmit={this.handleSubmit} className="login_form" size="small" name="login_form"
+                >
 
                     <FormItem>
+                    
                     {getFieldDecorator('userName', {
                         rules: [{ required: true, message: 'Please input your username!' }],
                     })(
@@ -67,11 +72,13 @@ class NormalLoginForm extends React.Component {
                     </NavLink>
                     </FormItem>
                 </Form>
-            }
-      </div>
+                    }
+            </div>
+      
     );
   }
 }
+
 
 const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 
@@ -88,4 +95,26 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WrappedNormalLoginForm);
+
+
+
+export class Login extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className='login'>
+                <div className='container'>
+                    <h1>Log into your Extrashift account</h1>
+                    <div className='form-wrapper'>
+                        <WrappedNormalLoginForm />
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

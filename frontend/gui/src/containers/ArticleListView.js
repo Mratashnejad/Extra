@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import Articles from "../components/Article";
 import CustomForm from "../components/Form";
+import * as actions from '../store/actions/auth';
 
 class ArticleList extends React.Component {
   state = {
@@ -18,8 +19,14 @@ class ArticleList extends React.Component {
 
   render() {
     return (
-      <div>
-        <Articles data={this.state.articles} />
+      <div>       
+        
+              <Articles data={this.state.articles} />
+        
+          <p>you shuld be authenticaded </p>
+                        
+            
+        
         <br/>
         <h2>Create an article</h2>
         <CustomForm requestType="post" articleID={null} btnText="Create"/>
@@ -28,4 +35,6 @@ class ArticleList extends React.Component {
   }
 }
 
+
 export default ArticleList;
+
