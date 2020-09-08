@@ -4,11 +4,12 @@ import ArticleList from "./containers/ArticleListView";
 import ArticleDetail from "./containers/ArticleDetailView";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup"
+import home from "./containers/index"
 
 const BaseRouter = () => {
   return (
     <div>
-      <Route exact path="/" component={ArticleList} />
+      <Route exact path="/" component={home} />
       <Route exact path="/extra" component={ArticleList} />
       <Route exact path="/extras/:articleID/" component={ArticleDetail} />
       <Route exact path="/login/" component={Login} />
