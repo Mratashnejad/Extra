@@ -5,7 +5,8 @@ import BaseRouter from './routes';
 import 'antd/dist/antd.css';
 import * as actions from './store/actions/auth';
 
-import CustomLayout from './containers/Layout';
+// import CustomLayout from './containers/Layout';
+import Home from './containers/index';
 
 class App extends Component {
 
@@ -17,9 +18,9 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <CustomLayout {...this.props}>
+          <Home {...this.props}>
               <BaseRouter />
-          </CustomLayout>
+          </Home>
         </Router>
       </div>
     );

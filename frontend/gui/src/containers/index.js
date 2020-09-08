@@ -2,11 +2,12 @@ import React from 'react';
 import DocumentTitle from 'react-document-title';
 import { enquireScreen } from 'enquire-js';
 
-// import Header from './Header';
+ import Header from './Header';
 // import Banner from './Banner';
 // import Page1 from './Page1';
 // import Page2 from './Page2';
 import Footer from './Footer';
+import Layout from './Layout';
 
 import '../static/style';
 
@@ -31,12 +32,13 @@ class Home extends React.PureComponent {
     return (
       <DocumentTitle title="Vivaro Dealers - Home">
         <div>
-          {/* <Header isMobile={this.state.isMobile} /> */}
+          <Layout isMobile={this.state.isMobile} />
           <div className="home-wrapper">
-            test
+            
             {/* <Banner isMobile={this.state.isMobile} />
             <Page1 isMobile={this.state.isMobile} />
             <Page2 /> */}
+            
           </div>
           <Footer />
         </div>
