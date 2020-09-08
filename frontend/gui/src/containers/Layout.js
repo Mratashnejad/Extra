@@ -19,17 +19,19 @@ class CustomLayout extends  React.Component {
             defaultSelectedKeys={["1"]}
             style={{ lineHeight: "54px" , float:'right' }}
           >
-            {
-             this.props.isAuthenticated ?
-              <Menu.Item key="4" onClick={this.props.logout}>
-                  Logout</Menu.Item>
-                
-                :
-  
-                <Menu.Item key="4">
-              <Link to="/login">Login</Link></Menu.Item>
-                
-            }
+             {
+                    this.props.isAuthenticated ?
+    
+                    <Menu.Item key="4" onClick={this.props.logout}>
+                        Logout
+                    </Menu.Item>
+    
+                    :
+    
+                    <Menu.Item key="4">
+                        <Link to="/login">Login</Link>
+                    </Menu.Item>
+                }
             <Menu.Item key="1"><Link to ="/">Home</Link></Menu.Item>
             <Menu.Item key="2"> <Link to="/extra">Extra</Link></Menu.Item>
             <Menu.Item key="3">
