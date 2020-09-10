@@ -4,18 +4,10 @@ import { Row, Col, Button } from 'antd';
 
 function Index() {
   return (
-    <Index id="index" className="dark">
-          <div className="index">
-          
-              
+  
+          <div className="index" style="dark">
                   this is contact 
-         
-
           </div>
-    </Index>
-      
   );
 }
-
-
 export default Index;
