@@ -1,4 +1,5 @@
 import {
+  Col, Row,
   message,
   Button,
   Card
@@ -32,35 +33,34 @@ class ArticleDetail extends React.Component {
   }
 
   render() {
-    return ( <
-      div >
-      <
-      Card title = {
-        this.state.article.title
-      } >
-        <p>Manager Name :{this.state.article.manager} </p>
-        <p>Date & Time :{this.state.article.datetime} </p>
-        <p>quantity  :{this.state.article.quantity} </p>
-        <p>gender  :{this.state.article.gender} </p>
-        <p>lable  :{this.state.article.lable} </p>
-        <p>language  :{this.state.article.language} </p>
-       </Card > 
-      <
-      br / >
+    return (
+      <div className="site-card-wrapper">
+    <Row gutter={16}>
+      <Col span={8}>
+        <Card title = {this.state.article.title} >
+            <p>Manager Name :{this.state.article.manager} </p>
+            <p>Date & Time :{this.state.article.datetime} </p>
+            <p>quantity  :{this.state.article.quantity} </p>
+            <p>gender  :{this.state.article.gender} </p>
+            <p>lable  :{this.state.article.lable} </p>
+            <p>language  :{this.state.article.language} </p>
+          </Card > 
+        </Col>
+      </Row>
+      <br / >
       <CustomForm requestType = "put"
       articleID = {
         this.state.article.id
       }
       btnText = "Update" / >
-      <
-      form onSubmit = {
+      <form onSubmit = {
         this.handleDelete
       } >
-      <
-      Button type = "danger"
-      htmlType = "submit" > Delete < /Button> < /
-      form > <
-      /div>
+      <Button type = "danger"
+            htmlType="submit" > Delete
+            </Button> 
+            </form > 
+      </div>
     );
   }
 }

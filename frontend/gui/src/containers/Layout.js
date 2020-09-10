@@ -32,34 +32,20 @@ class CustomLayout extends  React.Component {
             style={{ lineHeight: "54px" , float:'right' }}
           >
             
-            <Menu.Item key="1"><Link to ="/"> <HomeOutlined /> Home</Link></Menu.Item>
+            <Menu.Item key="1"> <Link to ="/"> <HomeOutlined /> Home</Link></Menu.Item>
             <Menu.Item key="2"> <Link to="/extra"><AlertOutlined />Extra</Link></Menu.Item>
-            <Menu.Item key="3">
-              <Link to="/courses"><ReadOutlined />Courses</Link></Menu.Item>
+            <Menu.Item key="3"> <Link to="/courses"><ReadOutlined />Courses</Link></Menu.Item>
             {
                     this.props.isAuthenticated ?
-    
-                    <Menu.Item key="4" onClick={this.props.logout}>
-                       < LogoutOutlined/>Logout
-                    </Menu.Item>
-    
+                    <Menu.Item key="4" onClick={this.props.logout}>< LogoutOutlined/>Logout</Menu.Item>
                     :
-  
-                <Menu.Item key="4">
-                  
-                        <Link to="/login"><LoginOutlined />Login</Link>
-                    </Menu.Item>
-              }
+                    <Menu.Item key="4"><Link to="/login"><LoginOutlined />Login</Link></Menu.Item>
+            }
             </Menu>
             </Row>
           
         </Header>
         <Content style={{ padding: "0 50px" }}>
-
-          {/* <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
-            <Breadcrumb.Item><Link to="/">List</Link></Breadcrumb.Item>
-          </Breadcrumb> */}
           <Index />
           <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
             { this.props.children }

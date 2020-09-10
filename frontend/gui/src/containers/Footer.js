@@ -8,7 +8,7 @@ function Footer() {
         <Row>
           <Col lg={6} sm={24} xs={24}>
             <div className="footer-center">
-              <h2>Extra Shifts </h2>
+              <h2>Extra Shifts</h2>
               <div>
                 <a target="_blank " href="https://github.com/ant-design/ant-design-pro">
                   Ant Design Pro GitHub
