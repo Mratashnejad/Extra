@@ -1,50 +1,21 @@
 import React from 'react';
-import DocumentTitle from 'react-document-title';
-import { enquireScreen } from 'enquire-js';
+import { Row, Col, Button } from 'antd';
+import Banner from './Banner';
 
- import Header from './Header';
-// import Banner from './Banner';
-// import Page1 from './Page1';
-// import Page2 from './Page2';
-import Footer from './Footer';
-import Layout from './Layout';
+function Index() {
+  return (
+    <Index id="index" className="dark">
+          <div className="index">
+              <Banner />
+              
+                  this is contact 
+         
 
-import '../static/style';
-
-let isMobile;
-
-enquireScreen((b) => {
-  isMobile = b;
-});
-
-class Home extends React.PureComponent {
-  state = {
-    isMobile,
-  }
-  componentDidMount() {
-    enquireScreen((b) => {
-      this.setState({
-        isMobile: !!b,
-      });
-    });
-  }
-  render() {
-    return (
-      <DocumentTitle title="Vivaro Dealers - Home">
-        <div>
-          <Layout isMobile={this.state.isMobile} />
-          <div className="home-wrapper">
-            
-            {/* <Banner isMobile={this.state.isMobile} />
-            <Page1 isMobile={this.state.isMobile} />
-            <Page2 /> */}
-            
           </div>
-          <Footer />
-        </div>
-      </DocumentTitle>
-    );
-  }
+    </Index>
+      
+  );
 }
 
-export default Home;
+
+export default Index;

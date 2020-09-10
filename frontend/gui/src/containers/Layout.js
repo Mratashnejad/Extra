@@ -1,10 +1,14 @@
 import React from "react";
 import { Link,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Layout, Menu, Breadcrumb, } from "antd";
+import {Row, Col, Layout, Menu, Breadcrumb} from "antd";
 import * as actions from '../store/actions/auth';
+import Footer from './Footer';
+import Index from './Index';
+import { HomeOutlined, LoginOutlined, LogoutOutlined, AlertOutlined, ReadOutlined } from '@ant-design/icons';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
+const LOGO_URL = 'https://gw.alipayobjects.com/zos/rmsportal/gVAKqIsuJCepKNbgbSwE.svg';
 
 class CustomLayout extends  React.Component {
   render() {
@@ -12,45 +16,58 @@ class CustomLayout extends  React.Component {
       <Layout className="layout" style={{backgroundColor: 'rgba(255, 255, 255, 0.0)', border: 0 }}>
         <Header style={{backgroundColor: 'rgba(255, 255, 255, 0.0)', border: 0 }}>
           <div className="logo" style={{float:"left" , size :"80px" }}/>
-          <a>EXTRA SHIFT MANAGER</a>
+          <Row>
+          <Col xxl={4} xl={5} lg={8} md={8} sm={24} xs={24}>
+            <div id="logo" to="/">
+              <img src={LOGO_URL} alt="logo" />
+              <span>Vivaro Delaer Services</span>
+            </div>
+          </Col>
+          
+
           <Menu
             theme="light"
             mode="horizontal"
             defaultSelectedKeys={["1"]}
             style={{ lineHeight: "54px" , float:'right' }}
           >
-             {
+            
+            <Menu.Item key="1"><Link to ="/"> <HomeOutlined /> Home</Link></Menu.Item>
+            <Menu.Item key="2"> <Link to="/extra"><AlertOutlined />Extra</Link></Menu.Item>
+            <Menu.Item key="3">
+              <Link to="/courses"><ReadOutlined />Courses</Link></Menu.Item>
+            {
                     this.props.isAuthenticated ?
     
                     <Menu.Item key="4" onClick={this.props.logout}>
-                        Logout
+                       < LogoutOutlined/>Logout
                     </Menu.Item>
     
                     :
-    
-                    <Menu.Item key="4">
-                        <Link to="/login">Login</Link>
+  
+                <Menu.Item key="4">
+                  
+                        <Link to="/login"><LoginOutlined />Login</Link>
                     </Menu.Item>
-                }
-            <Menu.Item key="1"><Link to ="/">Home</Link></Menu.Item>
-            <Menu.Item key="2"> <Link to="/extra">Extra</Link></Menu.Item>
-            <Menu.Item key="3">
-              <Link to="/courses">Courses</Link></Menu.Item>
-            
-          </Menu>
+              }
+            </Menu>
+            </Row>
+          
         </Header>
         <Content style={{ padding: "0 50px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
+
+          {/* <Breadcrumb style={{ margin: "16px 0" }}>
             <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
             <Breadcrumb.Item><Link to="/">List</Link></Breadcrumb.Item>
-          </Breadcrumb>
+          </Breadcrumb> */}
+          <Index />
           <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
             { this.props.children }
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>
+        <Footer>
+          <Footer/>
           
-          Mr.atashnejad ©2018 Created by 
         </Footer>
       </Layout>
     );

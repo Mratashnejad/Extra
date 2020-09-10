@@ -4,7 +4,7 @@ import GitHubButton from 'react-github-button';
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import { Button } from 'antd';
-import BannerSVGAnim from './component/BannerSVGAnim';
+import BannerSVGAnim from '../components/BannerSVGAnim';
 
 function Banner(props) {
   return (
