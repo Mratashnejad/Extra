@@ -105,7 +105,7 @@ class RegistrationForm extends React.Component {
         </FormItem>
         
         <FormItem>
-        <Button className="signup-form-button" htmlType="submit">
+        <Button className="signup-form-button-primary" htmlType="submit">
             Signup
         </Button>
         <p>Already have an account?
