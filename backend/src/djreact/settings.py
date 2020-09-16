@@ -23,22 +23,33 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 
-    'django.contrib.sites',
+    # Django sites framework is required
+    
+    'rest_auth',
+    'rest_framework.authtoken',
+    'rest_framework',
+    
+
+    #django rest framework
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'corsheaders',
-    'rest_auth',
     'rest_auth.registration',
-    'rest_framework',
-    'rest_framework.authtoken',
+    
+    'allauth.socialaccount',
+
+    #Providers
+    'django.contrib.sites',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.instagram',
 
+    #apps
     'articles'
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -99,7 +110,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-SITE_ID = 1
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
