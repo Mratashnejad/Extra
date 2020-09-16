@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.instagram',
 ]
 
-SITE_ID = 1
+SITE_ID = 2
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -126,3 +126,4 @@ CSRF_COOKIE_NAME = "csrftoken"
 ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+CORS_ORIGIN_ALLOW_ALL = True
