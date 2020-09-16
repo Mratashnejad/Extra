@@ -25,18 +25,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
 
+    #apps
+    'articles',
+
     # Django sites framework is required
-    
     'rest_auth',
     'rest_framework.authtoken',
     'rest_framework',
     
-
     #django rest framework
     'allauth',
     'allauth.account',
     'rest_auth.registration',
-    
     'allauth.socialaccount',
 
     #Providers
@@ -44,9 +44,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.instagram',
-
-    #apps
-    'articles'
 ]
 
 SITE_ID = 1
