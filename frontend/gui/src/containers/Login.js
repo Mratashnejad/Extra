@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { NavLink, BrowserRouter  } from "react-router-dom";
-import { Redirect } from "react-router";
+import { Redirect  , withRouter} from "react-router-dom";
+
 import { Form, Icon, Input, Button, Spin, Divider, Checkbox } from 'antd';
 
 import { connect } from 'react-redux';
@@ -25,7 +25,7 @@ const FormItem = Form.Item;
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 const googleID = "1089022313406-ctrbcmj1u99e5l9itfkt68d3nibjk0hb.apps.googleusercontent.com";
 ///social users login with google / facebook / instagram accounts including packages .
-const history = useHistory();
+
 
 class SocialLoginForm extends React.Component {
    
@@ -38,7 +38,7 @@ class SocialLoginForm extends React.Component {
         }
         const responseFacebook = async (response) => {
             let fbResponse = await fbLogin(response.accessToken)
-            history.push("/");
+            
             console.log(fbResponse);
             console.log(response);
            
@@ -47,7 +47,7 @@ class SocialLoginForm extends React.Component {
         const responseGoogle = async (response) => {
             let googleResponse = await googleLogin(response.accessToken)
            
-            history.push("/");
+                
                 console.log(googleResponse);
                 console.log(response);
             
@@ -208,4 +208,4 @@ export class Login extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
