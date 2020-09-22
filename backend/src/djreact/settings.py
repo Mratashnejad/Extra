@@ -27,6 +27,8 @@ INSTALLED_APPS = [
 
     #apps
     'articles',
+    'djreact',
+    'Vbot',
 
     # Django sites framework is required
     'rest_auth',
