@@ -138,7 +138,7 @@ class NormalLoginForm extends React.Component {
                         <Form.Item name="remember" valuePropName="checked" noStyle>
                                 <Checkbox>Remember me</Checkbox>
                                 <a style={{ float: 'right' }} className="login-form-forgot" href="">
-                            Forgot password ?
+                            Forgot password ??
                         </a>
                         </Form.Item>
 
@@ -200,7 +200,6 @@ export class Login extends Component {
                         <SocialLoginForm />
                         <h1 className="h1">Or use your email address</h1>
                         <WrappedNormalLoginForm />
-
                     </div>
                 </div>
             </div>
