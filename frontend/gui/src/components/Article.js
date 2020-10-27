@@ -31,15 +31,14 @@ const Articles = props => {
       renderItem={item => (
         <List.Item
           key={item.title}
-          
           actions={[ 
-           <a key="more" href={`/${item.id}`}>More</a>,<a key="reserve">Reserve</a>
+           <a key="more" href={`/extra/${item.id}`}>More</a>,<a key="reserve">Reserve</a>
           ]}
         >
       
             <List.Item.Meta
             avatar={<Avatar src={item.avatar} />}
-            title={<a href={`/${item.id}`}>{item.title}</a>}
+            title={<a href={`/extra/${item.id}`}>{item.title}</a>}
             description={item.manager}
           />
         </List.Item>

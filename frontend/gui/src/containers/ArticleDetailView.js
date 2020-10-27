@@ -34,7 +34,7 @@ class ArticleDetail extends React.Component {
 
   render() {
     return (
-      <div className="site-card-wrapper">
+    <div className="site-card-wrapper">
     <Row gutter={16}>
       <Col span={8}>
         <Card title = {this.state.article.title} >
