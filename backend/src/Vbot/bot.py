@@ -22,14 +22,14 @@ logger.addHandler(handler)
 
 app = Flask(__name__)
 viber = Api(BotConfiguration(
-  name='mratashnejadbot',
+  name='Extrashiftmanager',
   avatar='http://viber.com/avatar.jpg',
   auth_token='4c2bd457b067df00-8341ad4def0f91cc-9ce69133fdda2862'
 ))
 
 @app.route('/', methods=['POST'])
 def incoming():
-	logger.debug("received request. post data: {0}".format(request.get_data()))
+	logger.debug("daryaft shod. post data: {0}".format(request.get_data()))
 
 	viber_request = viber.parse_request(request.get_data().decode('utf8'))
 
@@ -50,7 +50,7 @@ def incoming():
 	return Response(status=200)
 
 def set_webhook(viber):
-	viber.set_webhook('https://e40c700f2d41.ngrok.io')
+	viber.set_webhook('http://telegrambot.sandbox.loc:80')
 
 if __name__ == "__main__":
 	scheduler = sched.scheduler(time.time, time.sleep)
@@ -59,4 +59,4 @@ if __name__ == "__main__":
 	t.start()
 
 	context = ('server.crt', 'server.key')
-	app.run(host='http://localhost/', port=8080, debug=True, ssl_context=context)
+	app.run(host='0.0.0.0', port=80, debug=True, ssl_context=context)
