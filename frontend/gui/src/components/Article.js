@@ -1,8 +1,8 @@
 import React from "react";
+import reqwest from 'reqwest';
+import { List, Avatar, Icon, Skeleton ,   } from "antd";
 
-import { List, Avatar, Icon, Skeleton , Divider  } from "antd";
-
-
+const count = 3;
 
 const IconText = ({ type, text }) => (
   <span>
