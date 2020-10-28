@@ -51,14 +51,15 @@ class CustomLayout extends  React.Component {
           </div>
         </Content>
 
-        <Footer>
+        <Footer style={{ textAlign: 'center' }}>
           <Row>
-            <Col span={8}>© 2020-2021 Mr.atashnejad
-                <Link to="/help"> Help</Link>
-                <Link to="/Contact-Us">  Contact Us</Link>
-              <Link to="/Terms-of-Service">  Terms of Service</Link>
-            </Col>
+            <Col span={8} offset={8}>© 2020-2021 Mr.atashnejad</Col>
+            <Col  ><Link to="/help"> Help</Link></Col>
+            <Col ><Link to="/Contact-Us">  Contact Us</Link></Col>
+          <Col><Link to="/Terms-of-Service">  Terms of Service</Link></Col>
           </Row>
+            
+          
         </Footer> 
       </Layout>
     );
