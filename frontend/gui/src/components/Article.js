@@ -1,18 +1,7 @@
 import React from "react";
 
-import { Table, Tag, Space , List, Avatar, Icon, Skeleton, } from "antd";
+import { Table } from "antd";
 
-
-
-
-
-const IconText = ({ type, text }) => (
-  <span>
-    <Icon type={type} style={{ marginRight: 8 }} />
-    {text}
-  </span>
-);
-const Day = new Date();
 
 
 const columns = [
@@ -51,29 +40,16 @@ const columns = [
     title: 'lable',
     dataIndex:'lable',
     key: 'lable',
-    // render: lable => (
-    //   <>
-    //     {tags.map(tag => {
-    //       let color = tag.length > 5 ? 'geekblue' : 'green';
-    //       if (tag === 'loser') {
-    //         color = 'volcano';
-    //       }
-    //       return (
-    //         <Tag color={color} key={tag}>
-    //           {tag.toUpperCase()}
-    //         </Tag>
-    //       );
-    //     })}
-    // </>
-    // ),
   },
   {
-    title: 'Action',
-    key: 'action',
+    title: 'Status',
+    key: 'Status',
     render: (text, record) => (
     <div>
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
+        <a>Plus  {record.name}</a>
+        <a>  |   </a>
+        <a>Full </a>
+       
      </div>
     ),
     
@@ -83,43 +59,8 @@ const columns = [
 const Articles = props => {
   return (
     <div>
-
-    <div>
-        <Table dataSource={props.data} columns={columns} 
-        
-        />
+        <Table dataSource={props.data} columns={columns}/>
     </div>
-<div>
-    
-    
-    <List
-      itemLayout="vertical"
-      pagination={{
-        onChange: page => {
-          console.log(page);
-        },
-        pageSize: 10
-      }}
-      dataSource={props.data}
-      renderItem={item => (
-        <List.Item
-          key={item.title}
-          actions={[ 
-           <a key="more" href={`/extra/${item.id}`}>More</a>,<a key="reserve">Reserve</a>
-          ]}
-        >
-            <List.Item.Meta
-            avatar={<Avatar src={item.avatar} />}
-            title={<a href={`/extra/${item.id}`}>{item.title}</a>}
-            description={item.manager}
-          />
-        </List.Item>
-      )}
-    />
-      </div>
-      </div>
-
-    
   );
 };
 
