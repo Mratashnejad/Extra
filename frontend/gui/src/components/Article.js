@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Table, Tag, Space, List, Avatar, Icon, Skeleton, } from "antd";
+import { Table, Tag, Space , List, Avatar, Icon, Skeleton, } from "antd";
 
 
 
@@ -17,14 +17,19 @@ const Day = new Date();
 
 const columns = [
   {
+    title: 'No',
+    dataIndex: 'id',
+    key:'id',
+  },
+  {
     title: 'Shift',
-    dataIndex: 'shift',
+    dataIndex: 'manager',
     key: 'name',
     render: text => <a>{text}</a>,
   },
   {
     title: 'Date',
-    dataIndex: 'date',
+    dataIndex: 'datetime',
     key: 'date',
   },
   {
@@ -43,10 +48,10 @@ const columns = [
     key:'language',
   },
   {
-    title: 'Tags',
-    dataIndex:'tags',
-    key: 'tags',
-    // render: tags => (
+    title: 'lable',
+    dataIndex:'lable',
+    key: 'lable',
+    // render: lable => (
     //   <>
     //     {tags.map(tag => {
     //       let color = tag.length > 5 ? 'geekblue' : 'green';
@@ -65,50 +70,24 @@ const columns = [
   {
     title: 'Action',
     key: 'action',
+    render: (text, record) => (
+    <div>
+        <a>Invite {record.name}</a>
+        <a>Delete</a>
+     </div>
+    ),
     
   },
 ];
-
-const data = [
-  {
-    key: '1',
-    shift: 'Sagris',
-    date: '10/28/2020', 
-    quantity: 'two',
-    gender: ['Male', 'Female'],
-    language: 'English',
-    tags: 'Urgent',
-    action:'none',
-  },
-  {
-    key: '2',
-    shift: 'Tigran',
-    date: '10/28/2020', 
-    quantity: 'two',
-    gender: ['Male'],
-    language: 'persian',
-    tags: 'Urgent',
-    action:'none',
-  },
-  {
-    key: '3',
-    shift: 'Marika',
-    date: '10/28/2020', 
-    quantity: 'two',
-    gender: ['Female'],
-    language: 'russian',
-    tags: 'Urgent',
-    action:'none',
-  },
-];  
-
 
 const Articles = props => {
   return (
     <div>
 
     <div>
-      <Table columns={columns} dataSource={data} />
+        <Table dataSource={props.data} columns={columns} 
+        
+        />
     </div>
 <div>
     
