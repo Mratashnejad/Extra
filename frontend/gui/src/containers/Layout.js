@@ -50,7 +50,7 @@ class CustomLayout extends  React.Component {
             { this.props.children }
           </div>
         </Content>
-{/* 
+
         <Footer>
           <Row>
             <Col span={8}>© 2020-2021 Mr.atashnejad
@@ -59,7 +59,7 @@ class CustomLayout extends  React.Component {
               <Link to="/Terms-of-Service">  Terms of Service</Link>
             </Col>
           </Row>
-        </Footer> */}
+        </Footer> 
       </Layout>
     );
 
