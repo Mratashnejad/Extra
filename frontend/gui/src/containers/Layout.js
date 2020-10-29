@@ -3,10 +3,11 @@ import { Link,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {Row, Col, Layout, Menu, Breadcrumb ,Avatar } from "antd";
 import * as actions from '../store/actions/auth';
+import Footer from "../components/home/Footer";
 
 import { HomeOutlined, LoginOutlined, LogoutOutlined, AlertOutlined, ReadOutlined } from '@ant-design/icons';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content} = Layout;
 const { SubMenu } = Menu;
 const LOGO_URL = 'https://gw.alipayobjects.com/zos/rmsportal/gVAKqIsuJCepKNbgbSwE.svg';
 const style = { padding: '20px 0' };
@@ -50,17 +51,7 @@ class CustomLayout extends  React.Component {
             { this.props.children }
           </div>
         </Content>
-
-        <Footer style={{ textAlign: 'center' }}>
-          <Row>
-            <Col span={8} offset={8}>© 2020-2021 Mr.atashnejad</Col>
-            <Col  ><Link to="/help"> Help</Link></Col>
-            <Col ><Link to="/Contact-Us">  Contact Us</Link></Col>
-          <Col><Link to="/Terms-of-Service">  Terms of Service</Link></Col>
-          </Row>
-            
-          
-        </Footer> 
+       <Footer />
       </Layout>
     );
 
