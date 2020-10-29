@@ -6,9 +6,9 @@ import {Link} from 'react-router-dom';
 
 function LandingHeader() {
     return (
-        <div div className="header__container">
+        <div className="header__container">
             <div className="half__width">
-                <p ClassName="heading-text">
+                <p className="heading-text">
                     Get Extra Shifts Easily!
                 </p>
                 <p className="heading-subtext">
@@ -21,7 +21,7 @@ function LandingHeader() {
                     <Button
                         type="primary"
                         size="large"
-                        className="button__custom get_started__btn">
+                        className="button__custom get__started__btn">
                             Get Started
                     </Button>
                     </a>
@@ -36,14 +36,15 @@ function LandingHeader() {
                         </Button>
                     </a>
                     </Link>
-                    <div className="half__width image-col">
-                        <img
-                            className="animate__animated animate__bounce animate__slower"
-                            src=""
-                            alt="ExtraShiftAnimation"
-                        />
-                    </div>
+                    
             </div>
+            <div className="half__width image-col">
+                        <img
+                        className="  animate__animated animate__bounce  animate__slower"
+                        src="./images/stock.svg"
+                        alt="price discounts"
+                        />
+                </div>
         </div>
     )
 }

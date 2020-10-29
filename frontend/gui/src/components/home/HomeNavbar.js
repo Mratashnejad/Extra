@@ -4,7 +4,7 @@ import { InfoCircleOutlined, LogoutOutlined,HomeOutlined, LoginOutlined,  AlertO
 import { Link, Router } from 'react-router-dom';
 
 
-import { Menu, Buttom } from "antd";
+import { Menu, Buttom,Avatar } from "antd";
 function HomeNavbar() {
     const { subMenu } = Menu
     const { current, setCurrent } = useState("home")
@@ -27,7 +27,7 @@ function HomeNavbar() {
         Router.path("/login")
         //authRest()
     }
-    const handleClick  = (e) => {
+    const handleClick = (e) => {
         setCurrent(e.key)
     }
 
@@ -37,50 +37,33 @@ function HomeNavbar() {
                 theme="dark"
                 // onClick={handleClick}
                 // selectedKeys={{ current }}
-                selectedKeys="extra"
-                mode="horizontal">
+                mode="horizontal"
+            >
                 <Menu.Item key="home">
                     <p className="icon-header-text">Vivaro Dealer Services</p>
                 </Menu.Item>
                 <Menu.Item
-                    key="extra"
-                    icon={<AlertOutlined />}
-                    className="nav-link">
-                    <Link to="/extra"><a>Extra</a></Link>
-                </Menu.Item>
-                <Menu.Item
-                    key="courses"
-                    icon={<ReadOutlined/>}
-                    className="nav-link">
-                    <Link to="/courses"><a>Courses</a></Link>
+                    className="nav-link"
+                    key="login"><Link to="/login"><LoginOutlined />Login</Link>
                 </Menu.Item>
                 
                 <Menu.Item
-                    key="about"
-                    icon={<InfoCircleOutlined />}
-                    className="nav-link">
-                    <Link to="/about"><a>How to Use</a> </Link>
-                    </Menu.Item>
-                {
-                //  auth
-                //  ? ["dashboard"].map((item) => (
-                //      <Menu.Item className="nav-link" key={item}>
-                //        {/* <Link href={`/${item}`}> */}
-                //        <a href={`/${item}`}>{item}</a>
-                //        {/* // </Link> */}
-                //      </Menu.Item>
-                //    ))
-                //  : ["login", "register"].map((item) => (
-                //      <Menu.Item className="nav-link" key={item}>
-                //        {/* <Link passHref href={`/${item}`}> */}
-                //        <a href={`/${item}`}>{item}</a>
-                //        {/* </Link> */}
-                //      </Menu.Item>
-                //    ))    
-                }
-                </Menu>
-        </div>
-
+                key="about"
+                className="nav-link">
+                <Link to="/about"><InfoCircleOutlined />How to Use</Link>
+                </Menu.Item>
+                <Menu.Item
+                key="courses"
+                className="nav-link">
+                <Link to="/courses"><ReadOutlined />Courses</Link>
+                </Menu.Item>
+                <Menu.Item
+                key="extra"
+                className="nav-link">
+                <Link to="/extra"><AlertOutlined />Extra</Link>
+                </Menu.Item>
+        </Menu>
+    </div>
     )
 }
 export default HomeNavbar
