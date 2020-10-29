@@ -1,8 +1,8 @@
   
 import React from "react"
 import { Button, button } from "antd";
-import "./landingHeader.less";
-import { Link,withRouter } from 'react-router-dom';
+import './LandingHeader.css';
+import {Link} from 'react-router-dom';
 
 function LandingHeader() {
     return (
@@ -16,7 +16,7 @@ function LandingHeader() {
                     But with the help of this automation system, you can get extra shifts without worrying.
                     After receiving a cancellation from an employee, we announce it to people who have extra shift quotas!
                 </p>
-                <link to="/dashboard">
+                <Link to="/dashboard">
                     <a>
                     <Button
                         type="primary"
@@ -25,8 +25,8 @@ function LandingHeader() {
                             Get Started
                     </Button>
                     </a>
-                    </link>
-                    <link to="/about">
+                    </Link>
+                    <Link to="/about">
                     <a>
                         <Button 
                             size="large"
@@ -35,7 +35,7 @@ function LandingHeader() {
                             Learn More
                         </Button>
                     </a>
-                    </link>
+                    </Link>
                     <div className="half__width image-col">
                         <img
                             className="animate__animated animate__bounce animate__slower"
@@ -47,3 +47,4 @@ function LandingHeader() {
         </div>
     )
 }
+export default LandingHeader

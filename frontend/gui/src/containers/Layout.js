@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {Row, Col, Layout, Menu, Breadcrumb ,Avatar } from "antd";
 import * as actions from '../store/actions/auth';
 import Footer from "../components/home/Footer";
+import LandingHeader from "../components/home/LandingHeader";
 
 import { HomeOutlined, LoginOutlined, LogoutOutlined, AlertOutlined, ReadOutlined } from '@ant-design/icons';
 
@@ -19,12 +20,7 @@ class CustomLayout extends  React.Component {
         <Header style={{backgroundColor: 'rgba(255, 255, 255, 0.0)', border: 0 }}>
           <div className="logo" style={{float:"left" , size :"80px" }}/>
           <Row>
-          <Col xxl={4} xl={5} lg={8} md={8} sm={24} xs={24}>
-            <div id="logo" to="/">
-              <img src={LOGO_URL} alt="logo" />
-              <span>Vivaro Delaer Services</span>
-            </div>
-          </Col>
+        
           <Menu
             theme="light"
             mode="horizontal"
@@ -45,12 +41,13 @@ class CustomLayout extends  React.Component {
             </Menu>
             </Row>
         </Header>
-
+        <LandingHeader />
         <Content style={{ padding: "0 50px" }}>
           <div style={{ padding: 24, minHeight: 280 }}>
             { this.props.children }
           </div>
         </Content>
+        
        <Footer />
       </Layout>
     );
