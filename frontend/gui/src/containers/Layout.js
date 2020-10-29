@@ -5,6 +5,7 @@ import {Row, Col, Layout, Menu, Breadcrumb ,Avatar } from "antd";
 import * as actions from '../store/actions/auth';
 import Footer from "../components/home/Footer";
 import LandingHeader from "../components/home/LandingHeader";
+import HomeNavbar from "../components/home/HomeNavbar";
 
 import { HomeOutlined, LoginOutlined, LogoutOutlined, AlertOutlined, ReadOutlined } from '@ant-design/icons';
 
@@ -16,8 +17,8 @@ const style = { padding: '20px 0' };
 class CustomLayout extends  React.Component {
   render() {
     return (
-      <Layout className="layout" style={{backgroundColor: 'rgba(255, 255, 255, 0.0)', border: 0 }}>
-        <Header style={{backgroundColor: 'rgba(255, 255, 255, 0.0)', border: 0 }}>
+      <Layout>
+        {/* <Header style={{backgroundColor: 'rgba(255, 255, 255, 0.0)', border: 0 }}>
           <div className="logo" style={{float:"left" , size :"80px" }}/>
           <Row>
         
@@ -40,7 +41,8 @@ class CustomLayout extends  React.Component {
             }
             </Menu>
             </Row>
-        </Header>
+        </Header> */}
+        <HomeNavbar />
         <LandingHeader />
         <Content style={{ padding: "0 50px" }}>
           <div style={{ padding: 24, minHeight: 280 }}>
