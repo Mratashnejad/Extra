@@ -5,7 +5,7 @@ import {UserOutlined } from '@ant-design/icons';
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
-class Profile extends React.Component {
+class Dashboard extends React.Component {
     render() {
         return (
             <Layout>
@@ -40,4 +40,4 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile;
+export default Dashboard;

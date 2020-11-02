@@ -1,38 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./HomeNavbarStyled.css";
 import { InfoCircleOutlined, LogoutOutlined,HomeOutlined, LoginOutlined,  AlertOutlined, ReadOutlined } from "@ant-design/icons";
-import { Link, Router } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+
 
 
 import { Menu, Buttom,Avatar } from "antd";
-function HomeNavbar() {
-    const { subMenu } = Menu
-    const { current, setCurrent } = useState("home")
-    const [auth, setAuth] = useState(false)
-    
-    useEffect(() => {
-        // const token = localStorage.getItem("")
-        // if (token) {
-        //     setAuth(true)
-        // }
-    }, [])
-    useEffect(() => {
-        if (current === "logout") {
-            logOut()
-        }
-    }, [current])
-    
-    const logOut = () => {
-        // localStorage.removeItem("")
-        Router.path("/login")
-        //authRest()
-    }
-    const handleClick = (e) => {
-        setCurrent(e.key)
-    }
-
-    return (
-        <div>
+class  HomeNavbar extends React.Component {
+    render() {
+        return (
+            <div>
+                { this.props.children }
             <Menu
                 theme="dark"
                 // onClick={handleClick}
@@ -42,10 +20,20 @@ function HomeNavbar() {
                 <Menu.Item key="home">
                     <p className="icon-header-text">Vivaro Dealer Services</p>
                 </Menu.Item>
-                <Menu.Item
-                    className="nav-link"
-                    key="login"><Link to="/login"><LoginOutlined />Login</Link>
-                </Menu.Item>
+                {
+                   this.props.isAuthenticated ?
+                        <Menu.Item
+                            className="nav-link"
+                            key="logout"
+                            >Logout
+                        </Menu.Item>
+                    :
+                        <Menu.Item
+                        className="nav-link"
+                        key="login"><Link to="/login"><LoginOutlined />Login</Link>
+                        </Menu.Item>
+                }
+                
                 
                 <Menu.Item
                 key="about"
@@ -64,6 +52,9 @@ function HomeNavbar() {
                 </Menu.Item>
         </Menu>
     </div>
-    )
-}
+        )
+    }
+};
+
+
 export default HomeNavbar

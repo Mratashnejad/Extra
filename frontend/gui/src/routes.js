@@ -5,7 +5,7 @@ import ArticleDetail from "./containers/ArticleDetailView";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup"
 import home from "./containers/Layout"
-import Profile from "./containers/Profile"
+import Dashboard from "./containers/Dashboard"
 
 const BaseRouter = () => {
   return (
@@ -15,7 +15,7 @@ const BaseRouter = () => {
       <Route exact path="/extra/:articleID/" component={ArticleDetail} />
       <Route exact path="/login/" component={Login} />
       <Route exact path="/signup/" component={Signup} />
-      <Route exact path="/profile/" component={Profile}/>
+      <Route exact path="/Dashboard/" component={Dashboard}/>
     </div>
   );
 };
