@@ -11,6 +11,11 @@ class ArticleList extends React.Component {
     articles: []
   };
   componentDidMount() {
+    axios.defaults.headers = {
+      "content-type": "Application/json",
+      Authorization : this.props.token
+      
+    }
     axios.get("http://127.0.0.1:8000/api/").then(res => {
       this.setState({
         articles: res.data
