@@ -3,6 +3,8 @@ import React from "react";
 import Articles from "../components/Article";
 import CustomForm from "../components/Form";
 import * as actions from '../store/actions/auth';
+import {connect} from 'react-redux';
+
 
 class ArticleList extends React.Component {
   state = {
@@ -34,6 +36,12 @@ class ArticleList extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    token :state.token 
+  }
+}
 
-export default ArticleList;
+
+export default connect(mapStateToProps)(ArticleList);
 
