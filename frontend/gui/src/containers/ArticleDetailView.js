@@ -23,19 +23,19 @@ class ArticleDetail extends React.Component {
       axios.defaults.headers = {
         "content-type": "Application/json",
         Authorization: newProps.token
-        
       }
       const articleID = this.props.match.params.articleID;
       axios.get(`http://127.0.0.1:8000/api/${articleID}`).then(res => {
         this.setState({
           article: res.data
-        });
-      });
+        })
+      })
     
     }
  
     handleDelete = (event) => {
       if (this.props.token == ! null) {
+        
         const articleID = this.props.match.params.articleID;
         axios.defaults.headers = {
           "content-type": "Application/json",
@@ -47,11 +47,13 @@ class ArticleDetail extends React.Component {
           .catch(error => message.error("somethings is wrong") && console.log(error));
         this.props.history.push('/');
         this.forceUpdate();
-      } else {
+      }
+      else {
         //show some message
       }
         
     }
+  }
    
 
     render() {
@@ -83,13 +85,13 @@ class ArticleDetail extends React.Component {
             </Button>
           </form >
         </div>
-      );
+      )
     }
-  }
 }
+
 const mapStateToProps = state => {
   return {
-    token :state.token 
+    token: state.token
   }
 }
 
