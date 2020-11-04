@@ -32,6 +32,7 @@ class ArticleDetail extends React.Component {
       })
     
     }
+  }
  
     handleDelete = (event) => {
       if (this.props.token == ! null) {
@@ -51,8 +52,6 @@ class ArticleDetail extends React.Component {
       else {
         //show some message
       }
-        
-    }
   }
    
 
