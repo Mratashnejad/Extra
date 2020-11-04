@@ -2,7 +2,6 @@ import axios from "axios";
 import React from "react";
 import Articles from "../components/Article";
 import CustomForm from "../components/Form";
-import * as actions from '../store/actions/auth';
 import {connect} from 'react-redux';
 
 

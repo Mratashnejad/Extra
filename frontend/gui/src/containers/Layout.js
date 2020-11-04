@@ -1,12 +1,12 @@
 import React from "react";
 import { Link,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {Row, Col, Layout, Menu, Breadcrumb ,Avatar } from "antd";
+import { Menu} from "antd";
 import * as actions from '../store/actions/auth';
 import Footer from "../components/home/Footer";
 import LandingHeader from "../components/home/LandingHeader";
 // import HomeNavbar from "../components/home/HomeNavbar";
-import { InfoCircleOutlined, LogoutOutlined,HomeOutlined, LoginOutlined,  AlertOutlined, ReadOutlined } from "@ant-design/icons";
+import { InfoCircleOutlined, LogoutOutlined, LoginOutlined,  AlertOutlined, ReadOutlined } from "@ant-design/icons";
 
 import "../components/home/HomeNavbarStyled.css";
 
@@ -27,7 +27,7 @@ class CustomLayout extends  React.Component {
                     <Menu.Item
                         className="nav-link"
                         key="logout"
-                        onClick={this.props.logout}>Logout
+                        onClick={this.props.logout}> <LogoutOutlined />Logout
                         </Menu.Item>
                         <Menu.Item
                         key="extra"

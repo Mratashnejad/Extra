@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import BaseRouter from './routes';
 import 'antd/dist/antd.css';
 import * as actions from './store/actions/auth';
-
 import CustomLayout from './containers/Layout';
 
-import { Layout } from 'antd';
 
 class App extends Component {
 

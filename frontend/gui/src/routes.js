@@ -4,7 +4,6 @@ import ArticleList from "./containers/ArticleListView";
 import ArticleDetail from "./containers/ArticleDetailView";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup"
-import home from "./containers/Layout"
 import Dashboard from "./containers/Dashboard"
 
 const BaseRouter = () => {

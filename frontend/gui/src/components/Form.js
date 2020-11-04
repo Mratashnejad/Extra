@@ -58,8 +58,8 @@ class CustomForm extends React.Component {
           .then(res => message.success("Data is Successfuly updated"))
           .catch(error => message.error("somethings is wrong") && console.log(error));
 
-        break;
       default:
+        return <h1>No project match</h1>
 
     }
   }

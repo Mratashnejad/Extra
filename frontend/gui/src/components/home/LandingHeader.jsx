@@ -1,6 +1,6 @@
   
 import React from "react"
-import { Button, button } from "antd";
+import { Button } from "antd";
 import './LandingHeader.css';
 import {Link} from 'react-router-dom';
 

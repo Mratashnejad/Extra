@@ -1,9 +1,9 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
-import {UserOutlined } from '@ant-design/icons';
+import { Layout, Menu} from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+const {Content,Sider } = Layout;
 
 class Dashboard extends React.Component {
     render() {

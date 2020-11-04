@@ -1,15 +1,10 @@
-import {
-  Col, Row,
-  message,
-  Button,
-  Card
-} from "antd";
 import axios from "axios";
 import React from "react";
-import Articles from "../components/Article";
-import { connect } from 'react-redux';
 
+import { connect } from 'react-redux';
 import CustomForm from "../components/Form";
+
+import {Col, Row,message,Button,Card} from "antd";
 
 class ArticleDetail extends React.Component {
   state = {
@@ -35,7 +30,7 @@ class ArticleDetail extends React.Component {
   }
  
     handleDelete = (event) => {
-      if (this.props.token == ! null) {
+      if (this.props.token ===! null) {
         
         const articleID = this.props.match.params.articleID;
         axios.defaults.headers = {
