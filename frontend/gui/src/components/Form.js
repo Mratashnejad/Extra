@@ -7,6 +7,7 @@ import {
 } from 'antd';
 
 import axios from 'axios';
+import { connect } from 'react-redux';
 const FormItem = Form.Item;
 
 class CustomForm extends React.Component {
@@ -22,7 +23,11 @@ class CustomForm extends React.Component {
     const gender = event.target.elements.gender.value;
     const lable = event.target.elements.lable.value;
     const language = event.target.elements.language.value;
-
+    axios.defaults.headers = {
+      "content-type": "Application/json",
+      Authorization : newProps.token
+      
+    }
     switch (requestType) {
       case 'post':
         return axios.post('http://127.0.0.1:8000/api/', {
@@ -60,84 +65,63 @@ class CustomForm extends React.Component {
   }
 
   render() {
-    return ( <
-      div >
-      <
-      Form onSubmit = {
-        (event) => this.handleFormSubmit(
-          event,
-          this.props.requestType,
-          this.props.articleID
-        )
-      } >
-      <
-      FormItem label = "Title" >
-      <
-      Input name = 'title'
-      placeholder = "Enter title here :" / >
-      <
-      /FormItem> <
-      FormItem label = "Manager" >
-      <
-      Input name = 'manager'
-      placeholder = "Enter manager Name" / >
-      <
-      /FormItem> <
-      FormItem label = "Date and Time" >
-      <
-      Input name = 'datetime'
-      placeholder = "Enter datetime" / >
-      <
-      /FormItem>
-      
-      <
-      FormItem label = "quantity" >
-      <
-      Input name = 'quantity'
-      placeholder = "Enter quantity" / >
-      <
-      /FormItem>
+    return (
+      <div>
+        <Form onSubmit = {
+          (event) => this.handleFormSubmit(
+            event,
+            this.props.requestType,
+            this.props.articleID)} >
+              
+              <FormItem label = "Title" >
+              <Input name = 'title'
+              placeholder = "Enter title here :" / >
+              </FormItem>
+              <FormItem label="Manager" >
+              <Input name = 'manager'
+              placeholder = "Enter manager Name" / >
+              </FormItem>
+
+              <FormItem label="Date and Time" >
+              <Input name = 'datetime'
+              placeholder = "Enter datetime" / >
+              </FormItem>
+                  
+              <FormItem label = "quantity" >
+              <Input name = 'quantity'
+              placeholder = "Enter quantity" / >
+              </FormItem>
 
 
-      <
-      FormItem label = "gender" >
-      <
-      Input name = 'gender'
-      placeholder = "Enter gender" / >
-      <
-      /FormItem>
+              <FormItem label = "gender" >
+              <Input name = 'gender'
+              placeholder = "Enter gender" / >
+              </FormItem>
 
-                
-      <
-      FormItem label = "lable" >
-      <
-      Input name = 'lable'
-      placeholder = "Enter lable" / >
-      <
-      /FormItem>
+                        
+              <FormItem label = "lable" >
+              <Input name = 'lable'
+              placeholder = "Enter lable" / >
+              </FormItem>
 
-      <
-      FormItem label = "language" >
-      <
-      Input name = 'language'
-      placeholder = "Enter language" / >
-      <
-      /FormItem>
-                
-      
-      
-      <
-      FormItem >
-      <
-      Button type = "primary"
-      htmlType = "Submit" > {
-        this.props.btnText
-      } < /Button> < /
-      FormItem > <
-      /Form> < /
-      div >
+              <FormItem label = "language" >
+              <Input name = 'language'
+              placeholder = "Enter language" / >
+              </FormItem>
+
+              <FormItem >
+              <Button type = "primary"
+              htmlType = "Submit" > {this.props.btnText}</Button>
+              </FormItem >
+        </Form>
+      </div>
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    token :state.token 
+  }
+}
 
-export default CustomForm;
+export default connect(mapStateToProps)(CustomForm);
