@@ -9,6 +9,7 @@ class ArticleList extends React.Component {
   state = {
     articles: []
   };
+  
   componentWillReceiveProps(newProps) {
     console.log(newProps);
 
@@ -23,7 +24,10 @@ class ArticleList extends React.Component {
           articles: res.data
         });
         console.log(res.data);
+        this.forceUpdate();
       });
+    } else {
+       /// return  shuld be login
     }
     
   }
@@ -35,11 +39,13 @@ class ArticleList extends React.Component {
         <Articles data={this.state.articles} />
         <br/>
       </div>
-      <div class ="container">
+
+      {/* add data from  */}
+      {/* <div class ="container">
        
         <h2>Create an article</h2>
         <CustomForm requestType="post" articleID={null} btnText="Create"/>
-      </div>
+      </div> */}
       </div>
     )
   }

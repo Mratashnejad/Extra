@@ -1,0 +1,14 @@
+ <div>
+        <h2>Create an article</h2>
+        <CustomForm requestType="post" articleID={null} btnText="Create"/>
+      </div>
+
+
+      for add items to article list
+
+
+
+//problems 
+      1/ extra need to refresh 
+      2/redirect
+      3/dashboard

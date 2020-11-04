@@ -4,14 +4,11 @@ import { connect } from 'react-redux';
 import { Menu} from "antd";
 import * as actions from '../store/actions/auth';
 import Footer from "../components/home/Footer";
-import LandingHeader from "../components/home/LandingHeader";
+//import LandingHeader from "../components/home/LandingHeader";
 // import HomeNavbar from "../components/home/HomeNavbar";
 import { InfoCircleOutlined, LogoutOutlined, LoginOutlined,  AlertOutlined, ReadOutlined } from "@ant-design/icons";
 
-import "../components/home/HomeNavbarStyled.css";
-
-
-
+import '../containers/Layout.css';
 
 class CustomLayout extends  React.Component {
   render() {
@@ -27,18 +24,19 @@ class CustomLayout extends  React.Component {
                     <Menu.Item
                         className="nav-link"
                         key="logout"
-                        onClick={this.props.logout}> <LogoutOutlined />Logout
-                        </Menu.Item>
-                        <Menu.Item
-                        key="extra"
-                        className="nav-link">
-                        <Link to="/extra"><AlertOutlined />Extra</Link>
+                        onClick={this.props.logout}><Link to="/"> <LogoutOutlined />Logout </Link>
                         </Menu.Item>
                         <Menu.Item
                         key="courses"
                         className="nav-link">
                         <Link to="/courses"><ReadOutlined />Courses</Link>
                         </Menu.Item>
+                        <Menu.Item
+                        key="extra"
+                        className="nav-link">
+                        <Link to="/extra"><AlertOutlined />Extra</Link>
+                        </Menu.Item>
+                        
                   </t>
                   :
                    <te>
@@ -55,8 +53,6 @@ class CustomLayout extends  React.Component {
                   </te>
           }
       </Menu>
-        
-        <LandingHeader />
         { this.props.children }
         <Footer />
      </div>
@@ -67,7 +63,7 @@ class CustomLayout extends  React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-      logout: () => dispatch(actions.logout()) 
+    logout: () => dispatch(actions.logout())
   }
 }
 

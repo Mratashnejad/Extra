@@ -5,11 +5,12 @@ import ArticleDetail from "./containers/ArticleDetailView";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup"
 import Dashboard from "./containers/Dashboard"
+import LandingHeader from "./components/home/LandingHeader"
 
 const BaseRouter = () => {
   return (
     <div>
-      <Route exact path="/"/>
+      <Route exact path="/" component={LandingHeader}/>
       <Route exact path="/extra" component={ArticleList} />
       <Route exact path="/extra/:articleID/" component={ArticleDetail} />
       <Route exact path="/login/" component={Login} />
