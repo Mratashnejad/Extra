@@ -7,6 +7,7 @@ class Courses extends React.Component{
         return (
 
             <Navbar />
+            
 
         )
     }

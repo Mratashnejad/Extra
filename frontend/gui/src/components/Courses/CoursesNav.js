@@ -48,7 +48,7 @@ class CoursesNavbar extends React.Component{
           Pie Gow
         </Menu.Item>
         <Menu.Item key="8" icon={<ShopOutlined />}>
-          Rulls
+          Rolls
         </Menu.Item>
       </Menu>
     </Sider>
