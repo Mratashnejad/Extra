@@ -20,7 +20,12 @@ class CustomLayout extends  React.Component {
                     <p className="icon-header-text">Vivaro Dealer Services</p>
                 </Menu.Item>
           { this.props.isAuthenticated ?
-                  <t>
+                  <React.Fragment>
+                    <Menu.Item
+                        key="User"
+                        className="nav-link">
+                    <Link to="/Dashboard">Dealer : {this.props.username}</Link>
+                        </Menu.Item>
                     <Menu.Item
                         className="nav-link"
                         key="logout"
@@ -37,9 +42,9 @@ class CustomLayout extends  React.Component {
                         <Link to="/extra"><AlertOutlined />Extra</Link>
                         </Menu.Item>
                         
-                  </t>
+                  </React.Fragment>
                   :
-                   <te>
+                   <React.Fragment>
                      <Menu.Item
                             className="nav-link"
                             key="login"><Link to="/login"><LoginOutlined />Login</Link>
@@ -50,7 +55,7 @@ class CustomLayout extends  React.Component {
                             <Link to="/about"><InfoCircleOutlined />How to Use</Link>
                             </Menu.Item>
                         
-                  </te>
+                  </React.Fragment>
           }
       </Menu>
         { this.props.children }
@@ -64,6 +69,7 @@ class CustomLayout extends  React.Component {
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(actions.logout())
+   
   }
 }
 
