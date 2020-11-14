@@ -21,27 +21,13 @@ class CustomLayout extends  React.Component {
                 </Menu.Item>
           { this.props.isAuthenticated ?
                   <React.Fragment>
-                    <Menu.Item
-                        key="User"
-                        className="nav-link">
-                    <Link to="/Dashboard">Dealer : {this.props.username}</Link>
-                        </Menu.Item>
+                    
                     <Menu.Item
                         className="nav-link"
                         key="logout"
                         onClick={this.props.logout}><Link to="/"> <LogoutOutlined />Logout </Link>
-                        </Menu.Item>
-                        <Menu.Item
-                        key="courses"
-                        className="nav-link">
-                        <Link to="/courses"><ReadOutlined />Courses</Link>
-                        </Menu.Item>
-                        <Menu.Item
-                        key="extra"
-                        className="nav-link">
-                        <Link to="/extra"><AlertOutlined />Extra</Link>
-                        </Menu.Item>
-                        
+                    </Menu.Item>
+              
                   </React.Fragment>
                   :
                    <React.Fragment>
@@ -57,7 +43,8 @@ class CustomLayout extends  React.Component {
                         
                   </React.Fragment>
           }
-      </Menu>
+        </Menu>
+        <Dashboard />
         { this.props.children }
         <Footer />
      </div>

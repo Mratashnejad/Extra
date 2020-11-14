@@ -8,15 +8,17 @@ import Dashboard from "./components/Dashboard/Dashboard"
 import LandingHeader from "./components/home/LandingHeader"
 
 
+
 const BaseRouter = () => {
   return (
     <div>
       <Route exact path="/" component={LandingHeader}/>
-      <Route exact path="/extra" component={ArticleList} />
+      <Route exact path="/Dashboard/Extra" component={ArticleList} />
       <Route exact path="/extra/:articleID/" component={ArticleDetail} />
       <Route exact path="/login/" component={Login} />
       <Route exact path="/signup/" component={Signup} />
       <Route exact path="/Dashboard/" component={Dashboard} />
+      
  
     </div>
   );
