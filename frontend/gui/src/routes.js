@@ -4,9 +4,9 @@ import ArticleList from "./containers/ArticleListView";
 import ArticleDetail from "./containers/ArticleDetailView";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup"
-import Dashboard from "./containers/Dashboard"
+import Dashboard from "./components/Dashboard/Dashboard"
 import LandingHeader from "./components/home/LandingHeader"
-import Courses from "./components/Courses/Courses"
+
 
 const BaseRouter = () => {
   return (
@@ -17,7 +17,7 @@ const BaseRouter = () => {
       <Route exact path="/login/" component={Login} />
       <Route exact path="/signup/" component={Signup} />
       <Route exact path="/Dashboard/" component={Dashboard} />
-      <Route exact path="/courses/" component={Courses}/>
+ 
     </div>
   );
 };
