@@ -1,4 +1,6 @@
 import React from "react";
+import 'antd/dist/antd.css';
+import './Dashboard.css';
 import { Layout, Menu, Breadcrumb,Icon , Avatar } from 'antd';
 import { BrowserRouter as Router, Route, Link ,Switch} from "react-router-dom";
 import {
@@ -40,7 +42,7 @@ class DashboardNav extends React.Component{
     }
     
     return (
-      <Layout style={{minHeight:'100vh'}}>
+      <Layout style={{minHeight:'100vh' ,backgroundColor:'#ffffff'}}>
       <Sider
           style={{
           overflow: 'auto',
@@ -89,14 +91,12 @@ class DashboardNav extends React.Component{
         </Menu>
       </Sider>
       <Layout>
-        <Content style={{ margin: '12px 12px'}}>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-            {pageView}
+        <Content style={{ margin: '25px 2px 12px 150px'}}>
+            <div style={{ padding: 10,  minHeight: 480 }}>
+              {pageView} 
           </div>
           </Content>
-          <Footer style={{ textAlign: 'center'}}>
-            Loving you forever ©2019 Created by XWH
-          </Footer>
+          
       </Layout>
     </Layout>
     )
