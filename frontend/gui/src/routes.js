@@ -13,13 +13,15 @@ const BaseRouter = () => {
   return (
     <div>
       <Route exact path="/" component={LandingHeader}/>
-      <Route exact path="/Dashboard/Extra" component={ArticleList} />
-      <Route exact path="/extra/:articleID/" component={ArticleDetail} />
+      {/* <Route exact path="/Extra" component={ArticleList} /> */}
+      
       <Route exact path="/login/" component={Login} />
       <Route exact path="/signup/" component={Signup} />
-      <Route exact path="/Dashboard/" component={Dashboard} />
-      
- 
+      {/* Dashboard routes */}
+      <Route exact path="/dashboard/" component={Dashboard} />
+      <Route exact path="/dashboard/extra" component={ArticleList} />
+      <Route exact path="/dashboard/extra/:articleID/" component={ArticleDetail} />
+
     </div>
   );
 };

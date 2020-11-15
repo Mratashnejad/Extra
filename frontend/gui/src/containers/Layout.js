@@ -44,7 +44,7 @@ class CustomLayout extends  React.Component {
                   </React.Fragment>
           }
         </Menu>
-        <Dashboard />
+       
         { this.props.children }
         <Footer />
      </div>
