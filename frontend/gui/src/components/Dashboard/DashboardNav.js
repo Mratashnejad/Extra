@@ -13,7 +13,7 @@ import {
 } from '@ant-design/icons';
 
 import Blackjack from '../Courses/Blackjack'
-
+import Article from '../Article'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -31,10 +31,10 @@ class DashboardNav extends React.Component{
 
   render() {
     let pageView;
-    if (this.state.currentPage === '2') {
-      pageView = <Blackjack />;
-    } else if (this.state.currentPage === '3'){
-      pageView = '';
+    if (this.state.currentPage === '1') {
+      pageView = <Article />;
+    } else if (this.state.currentPage === '5'){
+      pageView = <Blackjack />;;
     } else {
       pageView = '';
     }
@@ -62,19 +62,30 @@ class DashboardNav extends React.Component{
           <Menu theme="dark" mode="inline"
             defaultSelectedKeys={[this.state.currentPage]}
             onSelect={({key}) => this.setState({currentPage:key})}>
-              
-            <Menu.Item key="1">
-            <Icon type ="UserOutlined" /> 
-            <span>Dashboard</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-            <Icon type ="VideoCameraOutlined" /> 
-            <span>Extra List</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-            <Icon type ="UploadOutlined" /> 
-            <span>Profile</span>
-            </Menu.Item>
+         
+            <SubMenu key="sub1" icon={<UserOutlined />} title="Extra">
+            <Menu.Item key="1">Dealers </Menu.Item>
+            <Menu.Item key="2">Supports</Menu.Item>
+            <Menu.Item key="3">Floor Managers</Menu.Item>
+            <Menu.Item key="4">Managers</Menu.Item>
+            </SubMenu>
+          
+            
+            <SubMenu key="sub2" icon={<UserOutlined />} title="Courses">
+            <Menu.Item key="5">BlackJack</Menu.Item>
+            <Menu.Item key="6">Roullate</Menu.Item>
+            <Menu.Item key="7">Poker</Menu.Item>
+            <Menu.Item key="8">Baccarat</Menu.Item>
+            <Menu.Item key="9">Hi-Lo</Menu.Item>
+            <Menu.Item key="10">Pie gow</Menu.Item>
+            <Menu.Item key="11">Dragon</Menu.Item>
+            </SubMenu>
+
+            <SubMenu key="sub3" icon={<UserOutlined />} title="Profile">
+            <Menu.Item key="12">Setting</Menu.Item>
+            <Menu.Item key="13">Password</Menu.Item>
+         
+            </SubMenu>
         </Menu>
       </Sider>
       <Layout>

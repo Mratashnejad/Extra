@@ -49,17 +49,25 @@ const columns = [
         <a>Plus  {record.name}</a>
         <a>  |   </a>
         <a>Full </a>
-       
-     </div>
+      </div>
+  //     <span>
+  //     <Icon type="edit" title="编辑" onClick={() => this.showUpdateDialog(job)} />
+  //     <Icon type="close" title="删除" style={{ color: '#ee6633', marginLeft:12}} onClick={() => this.deleteConfirm(job)} />
+  // </span>
     ),
     
   },
 ];
 
+
 const Articles = props => {
   return (
     <div>
-        <Table dataSource={props.data} columns={columns}/>
+      <Table
+        style={{ marginTop: 10 }}
+        dataSource={props.data}
+        columns={columns}
+        pagination={false} />
     </div>
   );
 };
