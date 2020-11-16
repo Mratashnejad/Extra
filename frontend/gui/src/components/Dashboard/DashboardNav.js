@@ -17,8 +17,16 @@ import {
 
 ///courses
 import Blackjack from '../Courses/Blackjack'
+import Poker from '../Courses/Poker'
 import Roulatte from '../Courses/Roulatte'
 import HiLo from '../Courses/Hi-lo'
+import PieGow from '../Courses/PieGow'
+import Baccarat from '../Courses/Baccarat'
+import Dragon from '../Courses/Dragon'
+
+///setting & password setting
+import UserSetting from '../UserSetting'
+
 
 
 ///dataTable For Extra lists
@@ -42,10 +50,24 @@ class DashboardNav extends React.Component{
   render() {
     let pageView;
     if (this.state.currentPage === '1') {
-      pageView = <ArticleList />;
-    } else if (this.state.currentPage === '5'){
-      pageView = <Blackjack />;
-    } else {
+      pageView = <ArticleList/>;
+    } else if (this.state.currentPage === '5') {
+      pageView = <Blackjack/>;
+    } else if (this.state.currentPage === '6') {
+      pageView =  <Poker/> ;
+    }else if (this.state.currentPage === '7') {
+      pageView =  <Roulatte/> ;
+    }else if (this.state.currentPage === '8') {
+      pageView =   <Baccarat/>;
+    }else if (this.state.currentPage === '9') {
+      pageView =  <HiLo/> ;
+    }else if (this.state.currentPage === '10') {
+      pageView =   <PieGow/>;
+    }else if (this.state.currentPage === '11') {
+      pageView =   <Dragon/>;
+    }else if (this.state.currentPage === '12') {
+      pageView =  <UserSetting/> ;
+    }else {
       pageView = '';
     }
     
@@ -83,8 +105,8 @@ class DashboardNav extends React.Component{
             
             <SubMenu key="sub2" icon={<UserOutlined />} title="Courses">
             <Menu.Item key="5">BlackJack</Menu.Item>
-            <Menu.Item key="6">Roulatte</Menu.Item>
-            <Menu.Item key="7">Poker</Menu.Item>
+            <Menu.Item key="6">Poker</Menu.Item>
+            <Menu.Item key="7">Roulatte</Menu.Item>
             <Menu.Item key="8">Baccarat</Menu.Item>
             <Menu.Item key="9">Hi-Lo</Menu.Item>
             <Menu.Item key="10">Pie gow</Menu.Item>
