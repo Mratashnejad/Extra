@@ -15,8 +15,7 @@ import {
 } from '@ant-design/icons';
 
 import Blackjack from '../Courses/Blackjack'
-import Article from '../Article'
-import ArticleList from "../ArticleListView"
+import ArticleList from "../Article/ArticleListView"
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -77,7 +76,7 @@ class DashboardNav extends React.Component{
             
             <SubMenu key="sub2" icon={<UserOutlined />} title="Courses">
             <Menu.Item key="5">BlackJack</Menu.Item>
-            <Menu.Item key="6">Roullate</Menu.Item>
+            <Menu.Item key="6">Roulatte</Menu.Item>
             <Menu.Item key="7">Poker</Menu.Item>
             <Menu.Item key="8">Baccarat</Menu.Item>
             <Menu.Item key="9">Hi-Lo</Menu.Item>

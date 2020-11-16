@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import Articles from "./Article";
-import CustomForm from "./Form";
+import CustomForm from "../Form";
 import {connect} from 'react-redux';
 
 
