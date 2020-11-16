@@ -5,17 +5,10 @@ import 'antd/dist/antd.css';
 import './Dashboard.css';
 
 ///ant design componnets 
-import { Layout, Menu, Breadcrumb,Icon , Avatar } from 'antd';
-import { BrowserRouter as Router, Route, Link ,Switch} from "react-router-dom";
+import { Layout, Menu, Avatar } from 'antd';
+
 import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
   UserOutlined,
-  UploadOutlined,
-  VideoCameraOutlined,
 } from '@ant-design/icons';
 
 ///dashboard HomePage
@@ -98,17 +91,15 @@ class DashboardNav extends React.Component{
         >
           
           
-
-
           <Menu theme="dark" mode="inline"
             defaultSelectedKeys={[this.state.currentPage]}
             onSelect={({key}) => this.setState({currentPage:key})}>
 
-            <Menu.Item key="0">
+          
             <div className="logo" style={{height:80,backgroundColor:"#002140", textAlign: 'center'}}>
             <Avatar src={myIcon} alt='' style={{width:60, height:60, marginTop:10}}/>
             </div>
-            </Menu.Item>
+           
          
             <SubMenu key="sub1" icon={<UserOutlined />} title="Extra">
             <Menu.Item key="1">Dealers </Menu.Item>
