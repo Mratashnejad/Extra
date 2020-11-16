@@ -1,8 +1,9 @@
 import React from "react";
 
-import { Table } from "antd";
+                     
+import { Table , Button,Icon,Modal } from "antd";
 
-
+import CustomForm from "../Form";
 
 const columns = [
   {
@@ -45,15 +46,10 @@ const columns = [
     title: 'Status',
     key: 'Status',
     render: (text, record) => (
-    <span>
-        <a>Plus  {record.name}</a>
-        <a>  |   </a>
-        <a>Full </a>
-        </span>
-  //     <span>
-  //     <Icon type="edit" title="编辑" onClick={() => this.showUpdateDialog(job)} />
-  //     <Icon type="close" title="删除" style={{ color: '#ee6633', marginLeft:12}} onClick={() => this.deleteConfirm(job)} />
-  // </span>
+      <span>
+      <Icon type="edit" title="Edit"/>
+      <Icon type="close" title="Close" style={{ color: '#ee6633', marginLeft:12}} />
+      </span>
     ),
     
   },
@@ -62,13 +58,17 @@ const columns = [
 
 const Articles = props => {
   return (
-    <div>
+               
+    <div style={{ textAlign: 'right'}} >
+      <Button type="primary" icon="plus" onClick={<CustomForm />}>add Extra
+         </Button>
       <Table
         style={{ marginTop: 10 }}
         dataSource={props.data}
         columns={columns}
         pagination={false} />
     </div>
+    
   );
 };
 
