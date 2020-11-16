@@ -45,11 +45,11 @@ const columns = [
     title: 'Status',
     key: 'Status',
     render: (text, record) => (
-    <div>
+    <span>
         <a>Plus  {record.name}</a>
         <a>  |   </a>
         <a>Full </a>
-      </div>
+        </span>
   //     <span>
   //     <Icon type="edit" title="编辑" onClick={() => this.showUpdateDialog(job)} />
   //     <Icon type="close" title="删除" style={{ color: '#ee6633', marginLeft:12}} onClick={() => this.deleteConfirm(job)} />

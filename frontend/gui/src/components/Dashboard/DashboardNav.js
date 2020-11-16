@@ -16,6 +16,8 @@ import {
 
 import Blackjack from '../Courses/Blackjack'
 import Article from '../Article'
+import ArticleList from "../ArticleListView"
+
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -34,9 +36,9 @@ class DashboardNav extends React.Component{
   render() {
     let pageView;
     if (this.state.currentPage === '1') {
-      pageView = <Article />;
+      pageView = <ArticleList />;
     } else if (this.state.currentPage === '5'){
-      pageView = <Blackjack />;;
+      pageView = <Blackjack />;
     } else {
       pageView = '';
     }
