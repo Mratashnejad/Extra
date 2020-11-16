@@ -12,5 +12,6 @@ urlpatterns = [
     path('rest-auth/facebook/', FacebookLogin.as_view(),name='fb_login'),
     path('rest-auth/google/', GoogleLogin.as_view(),name='google_login'),
     path('rest-auth/instagram/',InstagramLogin.as_view(),name='insta_login'),
+    path('',include('accounts.urls')),
     
 ]

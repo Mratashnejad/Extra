@@ -26,8 +26,10 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #apps
+    'accounts',
     'articles',
     'djreact',
+    'knox',
     'Vbot',
 
     # Django sites framework is required
