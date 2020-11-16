@@ -1,6 +1,10 @@
 import React from "react";
+
+/// css Files 
 import 'antd/dist/antd.css';
 import './Dashboard.css';
+
+///ant design componnets 
 import { Layout, Menu, Breadcrumb,Icon , Avatar } from 'antd';
 import { BrowserRouter as Router, Route, Link ,Switch} from "react-router-dom";
 import {
@@ -13,6 +17,12 @@ import {
   UploadOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
+
+///dashboard HomePage
+import Dashboard from './Dashboard'
+
+///Image
+import myIcon from '../Images/myIcon.png'
 
 
 ///courses
@@ -35,6 +45,7 @@ import ArticleList from "../Article/ArticleListView"
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
+
 
 class DashboardNav extends React.Component{
   state = {
@@ -68,7 +79,7 @@ class DashboardNav extends React.Component{
     }else if (this.state.currentPage === '12') {
       pageView =  <UserSetting/> ;
     }else {
-      pageView = '';
+      pageView = <Dashboard/>;
     }
     
     return (
@@ -86,14 +97,18 @@ class DashboardNav extends React.Component{
           onCollapse={this.onCollapse}
         >
           
-          <div className="logo" style={{height:80,backgroundColor:"#002140", textAlign: 'center'}}>
-            {/* <Avatar src={myIcon} alt='' style={{width:60, height:60, marginTop:10}}/> */}
-          </div>
+          
 
 
           <Menu theme="dark" mode="inline"
             defaultSelectedKeys={[this.state.currentPage]}
             onSelect={({key}) => this.setState({currentPage:key})}>
+
+            <Menu.Item key="0">
+            <div className="logo" style={{height:80,backgroundColor:"#002140", textAlign: 'center'}}>
+            <Avatar src={myIcon} alt='' style={{width:60, height:60, marginTop:10}}/>
+            </div>
+            </Menu.Item>
          
             <SubMenu key="sub1" icon={<UserOutlined />} title="Extra">
             <Menu.Item key="1">Dealers </Menu.Item>

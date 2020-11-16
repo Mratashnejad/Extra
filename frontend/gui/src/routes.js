@@ -4,7 +4,8 @@ import ArticleList from "./components/Article/ArticleListView";
 import ArticleDetail from "./containers/ArticleDetailView";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup"
-import Dashboard from "./components/Dashboard/Dashboard"
+
+import DashboardNav from "./components/Dashboard/DashboardNav"
 import LandingHeader from "./components/home/LandingHeader"
 
 
@@ -18,9 +19,11 @@ const BaseRouter = () => {
       <Route exact path="/login/" component={Login} />
       <Route exact path="/signup/" component={Signup} />
       {/* Dashboard routes */}
-      <Route exact path="/dashboard/" component={Dashboard} />
-      <Route exact path="/dashboard/extra" component={ArticleList} />
-      <Route exact path="/dashboard/extra/:articleID/" component={ArticleDetail} />
+      <Route exact path="/dashboard/" component={DashboardNav} />
+
+      
+      {/* <Route exact path="/dashboard/extra" component={ArticleList} />
+      <Route exact path="/dashboard/extra/:articleID/" component={ArticleDetail} /> */}
 
     </div>
   );

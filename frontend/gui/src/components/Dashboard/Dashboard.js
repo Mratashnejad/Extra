@@ -5,7 +5,7 @@ import DashboardNav from './DashboardNav';
 class Dashboard extends React.Component {
     render() {
         return (
-            <DashboardNav />        
+           <p> this is dashboard page </p>
         );
     }
 }
