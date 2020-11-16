@@ -3,6 +3,7 @@ import { Form, Input, Icon, Button } from 'antd';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as actions from '../store/actions/auth';
+import '../containers/login.css';
 
 const FormItem = Form.Item;
 
