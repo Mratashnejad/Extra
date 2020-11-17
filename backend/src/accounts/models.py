@@ -7,17 +7,23 @@ from .managers import CustomUserManager
 
 
 class CustomUser(AbstractUser):
-    username = None
+    phonenumber = models.CharField(_('phone number'),max_length=9, blank=False , null=False,unique=True)
     email = models.EmailField(_('email address'), unique=True)
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
-
+    first_name = models.CharField(blank=True,max_length=100)
+    last_name = models.CharField(blank=True,max_length=150)
+    position = models.CharField(blank=False,max_length=50)
+    gender = models.CharField(blank=True, max_length=10)
+   
     objects = CustomUserManager()
 
-    spouse_name = models.CharField(blank=True,max_length=100)
-    Date_of_birth = models.DateField(blank=True,null=True)
+    
 
+    USERNAME_FIELD = 'phonenumber'
+    REQUIRED_FIELDS = ['email']
 
     def __str__(self):
-        return self.email
+        return self.phonenumber
+    def nickname (self):
+        return self.first_name + "" + self.last_name
+    
+    
