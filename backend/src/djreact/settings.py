@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.instagram',
 ]
 
-SITE_ID = 2
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -111,6 +110,9 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'accounts.api.serializers.UserSerializer',
+}
 
 
 REST_FRAMEWORK = {
@@ -125,9 +127,21 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
 )
 
+SITE_ID = 2
+AUTH_USER_MODEL = 'accounts.CustomUser'
 CSRF_COOKIE_NAME = "csrftoken"
 
-ACCOUNT_EMAIL_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/?verification=1'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/?verification=1'
 CORS_ORIGIN_ALLOW_ALL = True
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
