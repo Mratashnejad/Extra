@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models.fields import CharField
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import CustomUserManager
@@ -16,8 +17,6 @@ class CustomUser(AbstractUser):
    
     objects = CustomUserManager()
 
-    
-
     USERNAME_FIELD = 'phonenumber'
     REQUIRED_FIELDS = ['email']
 
@@ -25,5 +24,12 @@ class CustomUser(AbstractUser):
         return self.phonenumber
     def nickname (self):
         return self.first_name + "" + self.last_name
+
+class ShiftManager(models.Model):
+    shiftTitle = models.CharField(max_length=120)
+    shiftLanguage = models.CharField(max_length=100)
+    shiftManagerName = models.CharField(max_length=100)
+    
+
     
     
