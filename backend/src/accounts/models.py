@@ -8,6 +8,17 @@ from django.utils.translation import ugettext_lazy as _
 from .managers import CustomUserManager
 
 
+LANGUAGE_CHOICES =(
+    ('EN','ENGLISH'),
+    ('RU','RUSSIAN'),
+    ('AR','ARABIC'),
+    ('TR','TURKISH'),
+    ('PR','PERSIAN'),
+    ('ES','SPANISH'),
+    ('ARM','ARMENIAN'),
+)
+
+
 
 class CustomUser(AbstractUser):
     phonenumber = models.CharField(_('phone number'),max_length=9, blank=False , null=False,unique=True)
@@ -37,7 +48,7 @@ class Dealer(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
     shiftDate = models.CharField(max_length=100)
     shiftManager = models.ForeignKey(Manager, on_delete=CASCADE)
-    language = models.CharField(max_length=100)
+    language = models.CharField(choices=LANGUAGE_CHOICES, max_length=10)
     extraCounter = models.IntegerField(default=0)
     cancelCounter = models.IntegerField(default=0)
     status = models.CharField(max_length=100) # reserve ready 
@@ -75,7 +86,6 @@ class Shuffler(models.Model):
         return f"{self.user}"
 
 
-
 class Shift(models.Model):
     dealer = models.ManyToManyField(Dealer)
     manager = models.ForeignKey(Manager,on_delete=CASCADE)
@@ -84,7 +94,7 @@ class Shift(models.Model):
     shuffler = models.ManyToManyField(Shuffler)
     line = models.CharField(max_length=150) # line of cassino 
     title = models.CharField(max_length=120)
-    language = models.CharField(max_length=100)
+    language = models.CharField(choices=LANGUAGE_CHOICES, max_length=10)
 
 
     def __str__(self):
