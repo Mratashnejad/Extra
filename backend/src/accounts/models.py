@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db.models.deletion import CASCADE
 from django.db.models.expressions import Case
@@ -10,6 +11,7 @@ from .managers import CustomUserManager
 
 
 class CustomUser(AbstractUser):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=CASCADE)
     phonenumber = models.CharField(_('phone number'),max_length=9, blank=False , null=False,unique=True)
     email = models.EmailField(_('email address'), unique=True)
     first_name = models.CharField(blank=True,max_length=100)
@@ -24,10 +26,8 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = ['email']
 
     def __str__(self):
-        return self.phonenumber
-    def nickname (self):
-        return self.first_name + "" + self.last_name
-        
+        return self.user.username
+   
 class Manager(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
     shiftTitle = models.CharField(max_length=120)
