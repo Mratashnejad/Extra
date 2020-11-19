@@ -78,6 +78,8 @@ class Shuffler (models.Model):
     cancelCounter = models.IntegerField(default=0)
     status = models.CharField(max_length=100) # reserve ready 
 
+    def __str__(self):
+        return self.user.username
 
 
 class Shift(models.Model):
@@ -87,6 +89,8 @@ class Shift(models.Model):
     floorManager = models.ForeignKey(FloorManager,on_delete=CASCADE)
     line = models.CharField(max_length=150) # line of cassino 
 
+    def __str__(self):
+        return self.user.username
 
     title = models.CharField(max_length=120)
     language = models.CharField(max_length=100)
