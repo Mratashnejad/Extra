@@ -55,6 +55,9 @@ class LiveSuppoert(models.Model):
     extraCounter = models.IntegerField(default=0)
     cancelCounter = models.IntegerField(default=0)
     status = models.CharField(max_length=100) # reserve ready 
+    def __str__(self):
+        return self.user.username
+
 
 class FloorManager(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
@@ -63,6 +66,9 @@ class FloorManager(models.Model):
     extraCounter = models.IntegerField(default=0)
     cancelCounter = models.IntegerField(default=0)
     status = models.CharField(max_length=100) # reserve ready 
+    def __str__(self):
+        return self.user.username
+
 
 class Shuffler (models.Model):
     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
