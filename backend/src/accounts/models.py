@@ -44,6 +44,9 @@ class Dealer(models.Model):
     extraCounter = models.IntegerField(default=0)
     cancelCounter = models.IntegerField(default=0)
     status = models.CharField(max_length=100) # reserve ready 
+    def __str__(self):
+        return self.user.username
+
 
 class LiveSuppoert(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
