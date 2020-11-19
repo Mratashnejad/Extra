@@ -31,6 +31,9 @@ class CustomUser(AbstractUser):
 class Manager(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
     shiftTitle = models.CharField(max_length=120)
+    def __str__(self):
+        return self.user.username
+
     
 
 class Dealer(models.Model):
