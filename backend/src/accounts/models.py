@@ -18,6 +18,8 @@ LANGUAGE_CHOICES =(
     ('ARM','ARMENIAN'),
 )
 
+#ADD DATE TUPLE
+
 
 
 class CustomUser(AbstractUser):
