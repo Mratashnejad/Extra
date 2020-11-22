@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
 from django.db.models.deletion import CASCADE
 from django.db.models.expressions import Case
 from django.db.models.fields import CharField
@@ -31,71 +31,75 @@ class Manager(models.Model):
     managerTitle = models.CharField(max_length=120)
 
     def __str__(self):
-        return self.managerTitle
-
-class Dealer(models.Model):
-    user = models.ForeignKey(CustomUser,on_delete=CASCADE)
-    shiftDate = models.CharField(max_length=100)
-    shiftManager = models.ForeignKey(Manager, on_delete=CASCADE)
-    language = models.CharField(choices=LANGUAGE_CHOICES, max_length=10)
-    extraCounter = models.IntegerField(default=0)
-    cancelCounter = models.IntegerField(default=0)
-    status = models.CharField(max_length=100) # reserve ready 
-    def __str__(self):
-        return f"{self.user}"
-
-class LiveSupport(models.Model):
-    user = models.ForeignKey(CustomUser,on_delete=CASCADE)
-    shiftDate = models.CharField(max_length=100)
-    shiftManager = models.ForeignKey(Manager, on_delete=CASCADE)
-    extraCounter = models.IntegerField(default=0)
-    cancelCounter = models.IntegerField(default=0)
-    status = models.CharField(max_length=100) # reserve ready 
-    def __str__(self):
-        return f"{self.user}"
-
-class FloorManager(models.Model):
-    user = models.ForeignKey(CustomUser,on_delete=CASCADE)
-    shiftDate = models.CharField(max_length=100)
-    shiftManager = models.ForeignKey(Manager, on_delete=CASCADE)
-    extraCounter = models.IntegerField(default=0)
-    cancelCounter = models.IntegerField(default=0)
-    status = models.CharField(max_length=100) # reserve ready 
-    def __str__(self):
-        return f"{self.user}"
-
-class Shuffler(models.Model):
-    user = models.ForeignKey(CustomUser,on_delete=CASCADE)
-    shiftDate = models.CharField(max_length=100)
-    shiftManager = models.ForeignKey(Manager, on_delete=CASCADE)
-    extraCounter = models.IntegerField(default=0)
-    cancelCounter = models.IntegerField(default=0)
-    status = models.CharField(max_length=100) # reserve ready 
-    def __str__(self):
-        return f"{self.user}"
-
+        return f"{self.managerTitle}"
 
 class Shift(models.Model):
-    dealer = models.ManyToManyField(Dealer)
-    manager = models.ForeignKey(Manager,on_delete=CASCADE)
-    liveSupport = models.ManyToManyField(LiveSupport)
-    floorManager = models.ManyToManyField(FloorManager)
-    shuffler = models.ManyToManyField(Shuffler)
+    shiftManager = models.ForeignKey(Manager,on_delete=CASCADE) 
     line = models.CharField(max_length=150) # line of cassino 
-    title = models.CharField(max_length=120)
-    language = models.CharField(choices=LANGUAGE_CHOICES, max_length=10)
-
+    language = models.CharField(choices=LANGUAGE_CHOICES,max_length=50)
 
     def __str__(self):
-        return self.title
+        return f"{self.line}"
+
+
+class InfoCustomUser(models.Model):
+    user = models.ForeignKey(CustomUser,on_delete=CASCADE)
+    shiftDate = models.CharField(max_length=100)
+    extraCounter = models.IntegerField(default=0)
+    cancelCounter = models.IntegerField(default=0)
+    status = models.CharField(max_length=100) # reserve ready 
+    shift = models.ForeignKey(Shift,on_delete=CASCADE)
+
+    def __str__(self):
+        return f"{self.user}"
+
+
+# class LiveSupport(models.Model):
+#     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
+#     shiftDate = models.CharField(max_length=100)
+#     shiftManager = models.ForeignKey(Manager, on_delete=CASCADE)
+#     extraCounter = models.IntegerField(default=0)
+#     cancelCounter = models.IntegerField(default=0)
+#     status = models.CharField(max_length=100) # reserve ready 
+#     def __str__(self):
+#         return f"{self.user}"
+
+# class FloorManager(models.Model):
+#     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
+#     shiftDate = models.CharField(max_length=100)
+#     shiftManager = models.ForeignKey(Manager, on_delete=CASCADE)
+#     extraCounter = models.IntegerField(default=0)
+#     cancelCounter = models.IntegerField(default=0)
+#     status = models.CharField(max_length=100) # reserve ready 
+#     def __str__(self):
+#         return f"{self.user}"
+
+# class Shuffler(models.Model):
+#     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
+#     shiftDate = models.CharField(max_length=100)
+#     shiftManager = models.ForeignKey(Manager, on_delete=CASCADE)
+#     extraCounter = models.IntegerField(default=0)
+#     cancelCounter = models.IntegerField(default=0)
+#     status = models.CharField(max_length=100) # reserve ready 
+#     def __str__(self):
+#         return f"{self.user}"
+
 
 class Extra(models.Model):
+    
     title = models.CharField(max_length=100)
-    #slug = models.SlugField()
+    slug = models.SlugField()
     label = models.CharField(choices=ExtraLabelCategory,max_length=100)
     date  = models.DateField()
     quantity = models.IntegerField(default=1)
     #image = models.ImageField()
-
     def __str__(self):
         return f"{self.title}"
+
+class ExtraOrder(models.Model):
+    ExtraName = models.ForeignKey(Extra,on_delete=CASCADE)
+    ExtraUsers = models.ManyToManyField(CustomUser)
+    OrderDate = models.DateTimeField(_("ORDER TIME ") , auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.ExtraName}"
