@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #apps
-    'accounts',
+    'account',
     'Extra',
     'djreact',
     'knox',
