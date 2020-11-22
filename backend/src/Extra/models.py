@@ -1,3 +1,4 @@
+from django.core.checks import messages
 from django.db import models
 from django.contrib.auth.models import AbstractUser, User
 from django.db.models.deletion import CASCADE
@@ -23,15 +24,34 @@ ExtraLabelCategory=(
     ('Mi','Middle Shift'),
     ('Ni','Night Shift'),
 )
-
+#this is lable of the Status dealer
+# if dealer is NOT BLOCK can countinue 
+# 
+STATUS_LABALE=(
+    ('RDY','Ready'),
+    ('RES','Reserve'),
+    ('BLK','BLOCK'),
+)
 #ADD DATE TUPLE
 
 class Manager(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
     managerTitle = models.CharField(max_length=120)
 
+    ### check managers only could be a managers !!
+
+    # def checkmanager(self):
+    #     if f"{self.user.position}" != 'MA': 
+    #         raise messages("other user can not be a managers!")
+    #     return False
+
+   
+        
     def __str__(self):
         return f"{self.managerTitle}"
+  
+  
+# shift made by Manager - witchline - and wich languages 
 
 class Shift(models.Model):
     shiftManager = models.ForeignKey(Manager,on_delete=CASCADE) 
@@ -47,43 +67,12 @@ class InfoCustomUser(models.Model):
     shiftDate = models.CharField(max_length=100)
     extraCounter = models.IntegerField(default=0)
     cancelCounter = models.IntegerField(default=0)
-    status = models.CharField(max_length=100) # reserve ready 
+    status = models.CharField(choices=STATUS_LABALE , default='RDY',max_length=10) # reserve ready 
     shift = models.ForeignKey(Shift,on_delete=CASCADE)
 
     def __str__(self):
-        return f"{self.user}"
-
-
-# class LiveSupport(models.Model):
-#     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
-#     shiftDate = models.CharField(max_length=100)
-#     shiftManager = models.ForeignKey(Manager, on_delete=CASCADE)
-#     extraCounter = models.IntegerField(default=0)
-#     cancelCounter = models.IntegerField(default=0)
-#     status = models.CharField(max_length=100) # reserve ready 
-#     def __str__(self):
-#         return f"{self.user}"
-
-# class FloorManager(models.Model):
-#     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
-#     shiftDate = models.CharField(max_length=100)
-#     shiftManager = models.ForeignKey(Manager, on_delete=CASCADE)
-#     extraCounter = models.IntegerField(default=0)
-#     cancelCounter = models.IntegerField(default=0)
-#     status = models.CharField(max_length=100) # reserve ready 
-#     def __str__(self):
-#         return f"{self.user}"
-
-# class Shuffler(models.Model):
-#     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
-#     shiftDate = models.CharField(max_length=100)
-#     shiftManager = models.ForeignKey(Manager, on_delete=CASCADE)
-#     extraCounter = models.IntegerField(default=0)
-#     cancelCounter = models.IntegerField(default=0)
-#     status = models.CharField(max_length=100) # reserve ready 
-#     def __str__(self):
-#         return f"{self.user}"
-
+        return f"{self.extraCounter} of {self.user.First_name}"
+   
 
 class Extra(models.Model):
     
@@ -101,5 +90,22 @@ class ExtraOrder(models.Model):
     ExtraUsers = models.ManyToManyField(CustomUser)
     OrderDate = models.DateTimeField(_("ORDER TIME ") , auto_now_add=True)
     
+    # only staff can add an EXTRA ( managers and Live supports)
+    # 
+    # check if users have an Extra could be take it
+    # after take an extra counter ++
+    # dealer can take only one of the ONE Extra
+     
+
     def __str__(self):
         return f"{self.ExtraName}"
+
+
+
+
+
+
+
+
+
+# future : WHEN user add cancleSHift automaticly raise on an Extra !

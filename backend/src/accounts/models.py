@@ -26,9 +26,9 @@ class CustomUser(AbstractUser):
     email = models.EmailField(_('email address'), unique=True)
     first_name = models.CharField(blank=True,max_length=20)
     last_name = models.CharField(blank=True,max_length=120)
-    position = models.CharField(choices=POSITION_LISTS,blank=False,null=False,max_length=50)
+    position = models.CharField(choices=POSITION_LISTS,default='DE',blank=False,null=False,max_length=50)
     gender = models.CharField(choices=GENDER_LIST,blank=True,null=False,max_length=10)
-    
+
     objects = CustomUserManager()
     USERNAME_FIELD = 'phonenumber'
     REQUIRED_FIELDS = ['email','position','gender']
