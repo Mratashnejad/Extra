@@ -27,7 +27,7 @@ INSTALLED_APPS = [
 
     #apps
     'accounts',
-    'articles',
+    'Extra',
     'djreact',
     'knox',
     'Vbot',
