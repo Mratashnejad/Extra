@@ -26,12 +26,12 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #apps
-    'account',
+    'accounts',
     'Extra',
     'djreact',
     'knox',
     'Vbot',
-    'captcha',
+    
 
     # Django sites framework is required
     'rest_auth',
@@ -125,9 +125,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media_root')
 
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'accounts.api.serializers.UserSerializer',
-}
+# REST_AUTH_SERIALIZERS = {
+#     'USER_DETAILS_SERIALIZER': 'accounts.api.serializers.UserSerializer',
+# }
 
 
 REST_FRAMEWORK = {
@@ -143,7 +143,9 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 SITE_ID = 2
+
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
 CSRF_COOKIE_NAME = "csrftoken"
 
 
@@ -160,13 +162,3 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-
-
-
-# Recaptcha V3 google
-RECAPTCHA_SITE_KEY = "6LdhXrAZAAAAAHwztufA1vVIoJ73XeVLSHyQsBXU"
-RECAPTCHA_SECRET_KEY = "6LdhXrAZAAAAALdmLxY2tQ4NfUxIbxx6As9lGBFD"
-RECAPTCHA_DEFAULT_ACTION = 'generic'
-RECAPTCHA_SCORE_THRESHOLD = 0.5
-SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']

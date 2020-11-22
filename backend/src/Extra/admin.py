@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from .models import CustomUser, Manager, Dealer ,LiveSupport , FloorManager, Shuffler , Shift
+from .models import CustomUser, Manager, Dealer ,LiveSupport , FloorManager, Shuffler , Shift,Extra
 
 
 
@@ -43,7 +43,8 @@ class AdminShift(admin.ModelAdmin):
     list_display =['title', 'manager','line','language']
     # list_display_links =['dealer','liveSupport','floorManager','shuffler']
 
-
+class AdminExtra(admin.ModelAdmin):
+    list_display = ['title','label','date','quantity']
 
 
 
@@ -55,4 +56,5 @@ admin.site.register(LiveSupport,AdminLiveSupport)
 admin.site.register(FloorManager,AdminFloorManager)
 admin.site.register(Shuffler,AdminShuffler)
 admin.site.register(Shift,AdminShift)
+admin.site.register(Extra,AdminExtra)
 

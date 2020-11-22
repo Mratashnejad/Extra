@@ -5,7 +5,7 @@ from django.db.models.expressions import Case
 from django.db.models.fields import CharField
 from django.utils.translation import ugettext_lazy as _
 
-from .managers import CustomUserManager
+from accounts.models import CustomUser
 
 
 LANGUAGE_CHOICES =(
@@ -18,27 +18,14 @@ LANGUAGE_CHOICES =(
     ('ARM','ARMENIAN'),
 )
 
+ExtraLabelCategory=(
+    ('Mo','Morning Shift'),
+    ('Mi','Middle Shift'),
+    ('Ni','Night Shift'),
+)
+
 #ADD DATE TUPLE
 
-
-
-class CustomUser(AbstractUser):
-    phonenumber = models.CharField(_('phone number'),max_length=9, blank=False , null=False,unique=True)
-    email = models.EmailField(_('email address'), unique=True)
-    first_name = models.CharField(blank=True,max_length=100)
-    last_name = models.CharField(blank=True,max_length=150)
-    position = models.CharField(blank=False,max_length=50)
-    gender = models.CharField(blank=True, max_length=10)
-
-   
-    objects = CustomUserManager()
-
-    USERNAME_FIELD = 'phonenumber'
-    REQUIRED_FIELDS = ['email']
-
-    def __str__(self):
-        return self.first_name + "" + self.last_name
-   
 class Manager(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=CASCADE)
     managerTitle = models.CharField(max_length=120)
@@ -101,5 +88,14 @@ class Shift(models.Model):
 
     def __str__(self):
         return self.title
-   
-    
+
+class Extra(models.Model):
+    title = models.CharField(max_length=100)
+    #slug = models.SlugField()
+    label = models.CharField(choices=ExtraLabelCategory,max_length=100)
+    date  = models.DateField()
+    quantity = models.IntegerField(default=1)
+    #image = models.ImageField()
+
+    def __str__(self):
+        return f"{self.title}"
