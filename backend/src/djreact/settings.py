@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'djreact',
     'knox',
     'Vbot',
+    'captcha',
 
     # Django sites framework is required
     'rest_auth',
@@ -50,6 +51,17 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.instagram',
 ]
 
+
+# allauth
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -103,11 +115,14 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'build/static'),
+    os.path.join(BASE_DIR, 'assets'),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+MEDIA_ROOT = os.path.join(BASE_DIR,'media_root')
+
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 REST_AUTH_SERIALIZERS = {
@@ -145,3 +160,13 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
+
+# Recaptcha V3 google
+RECAPTCHA_SITE_KEY = "6LdhXrAZAAAAAHwztufA1vVIoJ73XeVLSHyQsBXU"
+RECAPTCHA_SECRET_KEY = "6LdhXrAZAAAAALdmLxY2tQ4NfUxIbxx6As9lGBFD"
+RECAPTCHA_DEFAULT_ACTION = 'generic'
+RECAPTCHA_SCORE_THRESHOLD = 0.5
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
