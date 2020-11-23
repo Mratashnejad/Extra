@@ -94,12 +94,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djreact.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+''' last database 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+'''
+#MONGODB database connections :
+DATABASES ={
+    'default':{
+        'ENGINE': 'djongo',
+        'NAME':'Extra_DB',
     }
 }
+
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
