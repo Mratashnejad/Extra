@@ -10,31 +10,31 @@ class CustomUseradmin(admin.ModelAdmin):
     search_fields=['email','phonenumber','position','first_name','last_name','gender'] # search by email on admin pannle
 
 class adminManagers(admin.ModelAdmin):
-    list_display =['id','admin','create_at','update_at','objects',]
+    list_display =['id','user','create_at','update_at','objects',]
 
 class adminLanguages(admin.ModelAdmin):
     list_display=['id','Language_name']
 
 class adminStaffs(admin.ModelAdmin):
-    list_display=['id','admin','language_id','create_at','update_at','fcm_token','objects']
+    list_display=['id','user','language_id','create_at','update_at','fcm_token','objects']
 
 class adminShifts(admin.ModelAdmin):
     list_display=['id','shift_name','language_id','manager_id','staff_id',]
 
 class adminDealers(admin.ModelAdmin):
-    list_display=['id','admin','language_id','shift_id','create_at','update_at','fcm_token','profile_pic','objects',]
+    list_display=['id','user','language_id','shift_id','create_at','update_at','fcm_token','objects',]
 
 class adminFloorManagers(admin.ModelAdmin):
-    list_display=['id','admin','language_id','shift_id','create_at','update_at','fcm_token','profile_pic','objects',]
+    list_display=['id','user','language_id','shift_id','create_at','update_at','fcm_token','objects',]
 
 class adminShufflers(admin.ModelAdmin):
-    list_display=['id','admin','shift_id','create_at','update_at','fcm_token','profile_pic','objects',]
+    list_display=['id','user','shift_id','create_at','update_at','fcm_token','objects',]
 
 class adminExtraShifts(admin.ModelAdmin):
-    list_display=['id','shift_id','language_id','ExtraShift_Date','ExtraShift_Time','create_at','update_at','priority_list','priority','quantity',]
+    list_display=['id','shift_id','language_id','ExtraShift_Date','ExtraShift_Time','create_at','update_at','priority','quantity',]
 
 class adminExtraShiftsOrder(admin.ModelAdmin):
-    list_display=['id','dealer_id','create_at']
+    list_display=['id','dealer_id','extraShift_id','create_at']
 
 
 admin.site.register(CustomUser,CustomUseradmin)
