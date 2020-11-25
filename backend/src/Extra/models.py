@@ -1,9 +1,9 @@
-from django.core.checks import messages
-from django.db import models
 from django.contrib.auth.models import AbstractUser, User
-from django.db.models.deletion import CASCADE
-from django.db.models.expressions import Case
+from django.db import models
 from django.db.models.fields import CharField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.db.models.deletion import CASCADE
 from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import CustomUser
@@ -34,75 +34,99 @@ STATUS_LABALE=(
 )
 #ADD DATE TUPLE
 
-class Manager(models.Model):
-    user = models.ForeignKey(CustomUser,on_delete=CASCADE)
-    managerTitle = models.CharField(max_length=120)
 
-    ### check managers only could be a managers !!
+#language is Very importants entire all cassino and it should be ADDABLE
+class Languages(models.Model):
+    id = models.AutoField(primary_key=True)
+    Language_name = models.CharField(max_length=255)
 
-    # def checkmanager(self):
-    #     if f"{self.user.position}" != 'MA': 
-    #         raise messages("other user can not be a managers!")
-    #     return False
 
-   
-        
-    def __str__(self):
-        return f"{self.managerTitle}"
+
+
+#Managers it means PITBOSS OR ADMIN SITE
+class Managers(models.Model):
+    id = models.AutoField(primary_key=True)
+    admin = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
+
+
+
+
+#Staffs it means LIVE SUPPORTS
+class Staffs(models.Model):
+    id= models.AutoField(primary_key=True)
+    admin = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+    language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now_add=True)
+    fcm_token = models.TextField(default="")
+    objects = models.Manager()
   
-  
-# shift made by Manager - witchline - and wich languages 
+#shift more important
+class Shifts(models.Model):
+    id = models.AutoField(primary_key=True)
+    shift_name = models.CharField(max_length=255)
+    language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
+    manager_id = models.ForeignKey(Managers,on_delete=models.CASCADE)
+    staff_id = models.ForeignKey(Staffs,on_delete=models.CASCADE)
 
-class Shift(models.Model):
-    shiftManager = models.ForeignKey(Manager,on_delete=CASCADE) 
-    line = models.CharField(max_length=150) # line of cassino 
-    language = models.CharField(choices=LANGUAGE_CHOICES,max_length=50)
+#Staffs who working on Tables of dealing cards /Dealer is first items of ONE SHIFT
+class Dealers(models.Model):
+    id = models.AutoField(primary_key=True)
+    admin = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+    language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
+    shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now_add=True)
+    fcm_token = models.TextField(default="")
+    profile_pic = models.ImageField()
+    objects = models.Manager()
 
-    def __str__(self):
-        return f"{self.line}"
+#people who manages Salons
+class FloorManagers(models.Model):
+    id = models.AutoField(primary_key=True)
+    admin = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+    language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
+    shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now_add=True)
+    fcm_token = models.TextField(default="")
+    profile_pic = models.ImageField()
+    objects = models.Manager()
+
+#people who shuffles Cards
+class Shufflers(models.Model):
+    id = models.AutoField(primary_key=True)
+    admin = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+    shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now_add=True)
+    fcm_token = models.TextField(default="")
+    profile_pic = models.ImageField()
+    objects = models.Manager()
 
 
-class InfoCustomUser(models.Model):
-    user = models.ForeignKey(CustomUser,on_delete=CASCADE)
-    shiftDate = models.CharField(max_length=100)
-    extraCounter = models.IntegerField(default=0)
-    cancelCounter = models.IntegerField(default=0)
-    status = models.CharField(choices=STATUS_LABALE , default='RDY',max_length=10) # reserve ready 
-    shift = models.ForeignKey(Shift,on_delete=CASCADE)
 
-    def __str__(self):
-        return f"{self.extraCounter} of {self.user.First_name}"
-   
-
-class Extra(models.Model):
-    
-    title = models.CharField(max_length=100)
-    slug = models.SlugField()
-    label = models.CharField(choices=ExtraLabelCategory,max_length=100)
-    date  = models.DateField()
+class ExtraShifts(models.Model):
+    id = models.AutoField(primary_key=True)
+    shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
+    language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
+    ExtraShift_Date = models.DateField() # which day ? thay need people to take an extra
+    ExtraShift_Time = models.TimeField() # what time ?  thay need people to take an extra
+    create_at = models.DateTimeField(auto_now_add=True) # when this extra created
+    update_at = models.DateTimeField(auto_now_add=True) # when this extra updated
+    priority_list = ((1,"Normal"),(2,"Urgent"))
+    priority = models.CharField(choices=priority_list,default=1,max_length=30) 
     quantity = models.IntegerField(default=1)
-    #image = models.ImageField()
-    def __str__(self):
-        return f"{self.title}"
 
-class ExtraOrder(models.Model):
-    ExtraName = models.ForeignKey(Extra,on_delete=CASCADE)
-    ExtraUsers = models.ManyToManyField(CustomUser)
-    OrderDate = models.DateTimeField(_("ORDER TIME ") , auto_now_add=True)
+class ExtraShiftsOrder(models.Model):
+    id = models.AutoField(primary_key=True)
+    dealer_id = models.ForeignKey(Dealers,on_delete=models.DO_NOTHING,null=True)
+    create_at = models.DateTimeField(auto_now_add=True) # when this extra was take it
 
     
-    # only staff can add an EXTRA ( managers and Live supports)
-    # 
-    # check if users have an Extra could be take it
-    # after take an extra counter ++
-    # dealer can take only one of the ONE Extra
-     
-
-    def __str__(self):
-        return f"{self.ExtraName}"
-
-
-
 
 
 
@@ -110,3 +134,10 @@ class ExtraOrder(models.Model):
 
 
 # future : WHEN user add cancleSHift automaticly raise on an Extra !
+
+    # only staff can add an EXTRA ( managers and Live supports)
+    # 
+    # check if users have an Extra could be take it
+    # after take an extra counter ++
+    # dealer can take only one of the ONE Extra
+     

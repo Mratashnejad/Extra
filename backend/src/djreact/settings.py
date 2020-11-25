@@ -94,21 +94,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djreact.wsgi.application'
 
-''' last database 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-'''
-#MONGODB database connections :
-DATABASES ={
-    'default':{
-        'ENGINE': 'djongo',
-        'NAME':'Extra_DB',
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+#MONGODB database connections :
+# DATABASES ={
+#     'default':{
+#         'ENGINE': 'djongo',
+#         'NAME':'Cassino_managment_system_DB',
+#     }
+# }
 
 
 
