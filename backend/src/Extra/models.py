@@ -68,7 +68,7 @@ class Shifts(models.Model):
     staff_id = models.ForeignKey(Staffs,on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.shift_name}"
+        return f"{self.id}"
 
 #Staffs who working on Tables of dealing cards /Dealer is first items of ONE SHIFT
 class Dealers(models.Model):
