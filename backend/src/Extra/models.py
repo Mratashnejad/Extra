@@ -40,7 +40,7 @@ class Managers(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
-    objects = models.Manager()
+    #objects = models.Manager()
 
     def __str__(self):
         return f"{self.id}"
@@ -54,7 +54,7 @@ class Staffs(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
     fcm_token = models.TextField(default="")
-    objects = models.Manager()
+    #objects = models.Manager()
 
     def __str__(self):
         return f"{self.id}"
@@ -80,7 +80,7 @@ class Dealers(models.Model):
     update_at = models.DateTimeField(auto_now_add=True)
     fcm_token = models.TextField(default="")
     #profile_pic = models.ImageField()
-    objects = models.Manager()
+    #objects = models.Manager()
 
     def __str__(self):
         return f"{self.id}"
@@ -95,7 +95,7 @@ class FloorManagers(models.Model):
     update_at = models.DateTimeField(auto_now_add=True)
     fcm_token = models.TextField(default="")
     #profile_pic = models.ImageField()
-    objects = models.Manager()
+    #objects = models.Manager()
 
     def __str__(self):
         return f"{self.id}"
@@ -109,7 +109,7 @@ class Shufflers(models.Model):
     update_at = models.DateTimeField(auto_now_add=True)
     fcm_token = models.TextField(default="")
     #profile_pic = models.ImageField()
-    objects = models.Manager()
+    #objects = models.Manager()
 
     def __str__(self):
         return f"{self.id}"

@@ -1,23 +1,12 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path,include
+from knox.views import LogoutView
 
+from .views import UserAPIView , RegisterAPIView , LoginAPIView
 
 urlpatterns = [
-    path('api/', include('Extra.api.urls')),
-    path('rest-auth/', include('rest_auth.urls')),
-    path('api-auth/', include('rest_framework.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    #path('rest-auth/facebook/', FacebookLogin.as_view(),name='fb_login'),
-    # path('rest-auth/google/', GoogleLogin.as_view(),name='google_login'),
-    # path('rest-auth/instagram/',InstagramLogin.as_view(),name='insta_login'),
-    
+    path('',include('knox.urls')),
+    path('user',UserAPIView.as_view()),
+    path('register',RegisterAPIView.as_view()),
+    path('login',LoginAPIView.as_view()),
+    path('logout',LogoutView.as_view(),name='knox_logout')
 ]
-
-
-# urlpatterns = [
-   
-#     url(r'^rest-auth/', include('rest_auth.urls')),
-#     url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
-#     url(r'^account/', include('allauth.urls')),
-#     url(r'^accounts-rest/registration/account-confirm-email/(?P<key>.+)/$', confirm_email, name='account_confirm_email'),
-# ]
