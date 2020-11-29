@@ -17,7 +17,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1']
 
 INSTALLED_APPS = [
-    'accounts.apps.accountsConfig',
+    
+
+    # 'accounts.apps.accountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,7 +29,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #apps
-    
+    'accounts',
     'Cassino_managment_system',
     'djreact',
     'knox',
