@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'Cassino_managment_system',
     'djreact',
     'knox',
+  
 
     # Django sites framework is required
     'rest_auth',

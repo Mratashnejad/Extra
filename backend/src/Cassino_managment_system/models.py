@@ -70,7 +70,7 @@ class Dealers(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
-    shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
+    shift_name = models.ForeignKey(Shifts,on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
     
@@ -84,7 +84,7 @@ class FloorManagers(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
-    shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
+    shift_name = models.ForeignKey(Shifts,on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
     
@@ -97,20 +97,20 @@ class FloorManagers(models.Model):
 class Shufflers(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
+    shift_name = models.ForeignKey(Shifts,on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
     
     #profile_pic = models.ImageField()
 
 
-    def __str__(self):
-        return f"{self.id}"
+    def __int__(self):
+        return self.id
 
 
 class ExtraShifts(models.Model):
     id = models.AutoField(primary_key=True)
-    shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
+    shift_name = models.ForeignKey(Shifts,on_delete=models.CASCADE)
     language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
     ExtraShift_Date = models.DateField() # which day ? thay need people to take an extra
     Time_List=(('now','NOW'),('10','10am to 6pm'),('6','6pm to 2am'),('2','2am to 10am'))
@@ -127,7 +127,7 @@ class ExtraShifts(models.Model):
 
 class ExtraShiftsOrder(models.Model):
     id = models.AutoField(primary_key=True)
-    extraShift_id = models.ForeignKey(ExtraShifts,on_delete=CASCADE)
+    extrashift_name = models.ForeignKey(ExtraShifts,on_delete=CASCADE)
     dealer_id = models.ForeignKey(Dealers,on_delete=models.CASCADE,null=True)
     create_at = models.DateTimeField(auto_now_add=True) # when this extra was take it
 
