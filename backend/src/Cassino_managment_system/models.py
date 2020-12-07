@@ -21,14 +21,13 @@ STATUS_LABALE=(
 )
 #ADD DATE TUPLE
 
-
 #language is Very importants entire all cassino and it should be ADDABLE
 class Languages(models.Model):
     id = models.AutoField(primary_key=True)
     Language_name = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.Language_name}"
+        return  self.Language_name
 
 
 
@@ -39,8 +38,8 @@ class Managers(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
 
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return F"{self.user}"
   
 
 #Staffs it means LIVE SUPPORTS
@@ -51,8 +50,8 @@ class Staffs(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
     
-    def __int__(self):
-        return self.id
+    def __str__ (self):
+        return F"{self.user}"
   
 #shift more important
 class Shifts(models.Model):
@@ -62,55 +61,55 @@ class Shifts(models.Model):
     manager_id = models.ForeignKey(Managers,on_delete=models.CASCADE)
     staff_id = models.ForeignKey(Staffs,on_delete=models.CASCADE)
 
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return F"{self.shift_name}"
   
 #Staffs who working on Tables of dealing cards /Dealer is first items of ONE SHIFT
 class Dealers(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
-    shift_name = models.ForeignKey(Shifts,on_delete=models.CASCADE)
+    shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
     
     #profile_pic = models.ImageField()
 
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return F"{self.user}"
   
 #people who manages Salons
 class FloorManagers(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
-    shift_name = models.ForeignKey(Shifts,on_delete=models.CASCADE)
+    shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
     
     #profile_pic = models.ImageField()
 
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return F"{self.user}"
 
 # #people who shuffles Cards
 class Shufflers(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    shift_name = models.ForeignKey(Shifts,on_delete=models.CASCADE)
+    shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
     
     #profile_pic = models.ImageField()
 
 
-    def __int__(self):
-        return self.id
+    def __str__ (self):
+        return F"{self.user}"
 
 
 class ExtraShifts(models.Model):
     id = models.AutoField(primary_key=True)
-    shift_name = models.ForeignKey(Shifts,on_delete=models.CASCADE)
+    shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
     language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
     ExtraShift_Date = models.DateField() # which day ? thay need people to take an extra
     Time_List=(('now','NOW'),('10','10am to 6pm'),('6','6pm to 2am'),('2','2am to 10am'))
@@ -121,14 +120,14 @@ class ExtraShifts(models.Model):
     priority = models.CharField(choices=priority_list,default='Normal',max_length=12) 
     quantity = models.IntegerField(default=1)
 
-    def __int__(self):
-        return self.id
+    def __str__ (self):
+        return  F"{self.shift_id}"
   
 
 class ExtraShiftsOrder(models.Model):
     id = models.AutoField(primary_key=True)
-    extrashift_name = models.ForeignKey(ExtraShifts,on_delete=CASCADE)
-    dealer_id = models.ForeignKey(Dealers,on_delete=models.CASCADE,null=True)
+    shift = models.ForeignKey(ExtraShifts,on_delete=CASCADE)
+    dealer = models.ForeignKey(Dealers,on_delete=models.CASCADE,null=True)
     create_at = models.DateTimeField(auto_now_add=True) # when this extra was take it
 
     def __int__(self):

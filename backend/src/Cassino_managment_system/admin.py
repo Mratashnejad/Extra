@@ -24,19 +24,19 @@ class adminShifts(admin.ModelAdmin):
     list_display=['id','shift_name','language_id','manager_id','staff_id']
 
 class adminDealers(admin.ModelAdmin):
-    list_display=['id','user','language_id','shift_name','create_at','update_at']
+    list_display=['id','user','language_id','shift_id','create_at','update_at']
 
 class adminFloorManagers(admin.ModelAdmin):
-    list_display=['id','user','language_id','shift_name','create_at','update_at']
+    list_display=['id','user','language_id','shift_id','create_at','update_at']
 
 class adminShufflers(admin.ModelAdmin):
-    list_display=['id','user','shift_name','create_at','update_at']
+    list_display=['id','user','shift_id','create_at','update_at']
 
 class adminExtraShifts(admin.ModelAdmin):
-    list_display=['id','shift_name','language_id','ExtraShift_Date','ExtraShift_Time','create_at','update_at','priority','quantity']
+    list_display=['id','shift_id','language_id','ExtraShift_Date','ExtraShift_Time','create_at','update_at','priority','quantity']
 
 class adminExtraShiftsOrder(admin.ModelAdmin):
-    list_display=['id','dealer_id','extrashift_name','create_at']
+    list_display=['id','dealer','shift','create_at']
 
 
 # admin.site.register(CustomUser,CustomUseradmin)
