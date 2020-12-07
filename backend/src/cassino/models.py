@@ -1,7 +1,9 @@
 
+from django.core.checks.messages import Error
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
+from django.urls import reverse
 
 
 
@@ -122,17 +124,30 @@ class ExtraShifts(models.Model):
 
     def __str__ (self):
         return  F"{self.shift_id}"
-  
+
+    # def get_absolute_url(self):
+    #     return reverse("cassino:Extra", kwargs={"pk": self.pk})
 
 class ExtraShiftsOrder(models.Model):
     id = models.AutoField(primary_key=True)
     shift = models.ForeignKey(ExtraShifts,on_delete=CASCADE)
     dealer = models.ForeignKey(Dealers,on_delete=models.CASCADE,null=True)
     create_at = models.DateTimeField(auto_now_add=True) # when this extra was take it
+    baqimandeextra = models.IntegerField(default=0)
 
+    
     def __int__(self):
         return self.id
-  
+    # def get_order(self):
+        
+    #     if self.baqimandeextra > ExtraShifts.quantity:
+    #         print("nemishe")
+    #     else:
+    #         print("mishe extra bardasht")
+    # get_order()
+    # def check_quantity(self):
+    #     if ExtraShifts.quantity == 0:
+    #         raise Error
 
 
 

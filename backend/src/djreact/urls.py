@@ -14,6 +14,6 @@ urlpatterns = [
  
     path('admin/', admin.site.urls),
     path('api/auth/',include('accounts.api.urls')),
-    path('api/',include(router.urls)),
+    path('api/',include('cassino.api.urls'))
     
 ]

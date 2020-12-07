@@ -4,10 +4,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'y*mxx!-n89gd@o&or&_zy$vs6&phjeosjh59n+5w81c1$(k^(-'
 
@@ -17,9 +13,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1']
 
 INSTALLED_APPS = [
-    
-
-    # 'accounts.apps.accountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,16 +23,14 @@ INSTALLED_APPS = [
 
     #apps
     'accounts',
-    'Cassino_managment_system',
+    'cassino',
     'djreact',
     'knox',
   
-
     # Django sites framework is required
     'rest_auth',
     'rest_framework',
  
-
     #Providers
     'django.contrib.sites',
 
