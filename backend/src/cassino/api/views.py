@@ -9,7 +9,7 @@ from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK,HTTP_400_BAD_REQUEST
-from cassino.models import ExtraShifts
+from cassino.models import ExtraShifts,ExtraShiftsOrder
 from .serializes import (ExtraSerialaizer)
 import stripe
 
@@ -23,4 +23,8 @@ class ExtraShiftListView(ListAPIView):
     permission_classes = (AllowAny,)
     serializer_class = ExtraSerialaizer
     queryset = ExtraShifts.objects.all()
+
+# class check(ListAPIView):
+#     def get(self,request,*args, **kwargs):
+        
     
