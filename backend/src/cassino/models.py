@@ -14,8 +14,8 @@ ExtraLabelCategory=(
     ('Ni','Night Shift'),
 )
 #this is lable of the Status dealer
-# if dealer is NOT BLOCK can countinue 
-# 
+# if dealer is NOT BLOCK can countinue
+#
 STATUS_LABALE=(
     ('RDY','Ready'),
     ('RES','Reserve'),
@@ -42,7 +42,7 @@ class Managers(models.Model):
 
     def __str__(self):
         return F"{self.user}"
-  
+
 
 #Staffs it means LIVE SUPPORTS
 class Staffs(models.Model):
@@ -51,10 +51,10 @@ class Staffs(models.Model):
     language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__ (self):
         return F"{self.user}"
-  
+
 #shift more important
 class Shifts(models.Model):
     id = models.AutoField(primary_key=True)
@@ -65,7 +65,7 @@ class Shifts(models.Model):
 
     def __str__(self):
         return F"{self.shift_name}"
-  
+
 #Staffs who working on Tables of dealing cards /Dealer is first items of ONE SHIFT
 class Dealers(models.Model):
     id = models.AutoField(primary_key=True)
@@ -74,12 +74,12 @@ class Dealers(models.Model):
     shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
-    
+
     #profile_pic = models.ImageField()
 
     def __str__(self):
         return F"{self.user}"
-  
+
 #people who manages Salons
 class FloorManagers(models.Model):
     id = models.AutoField(primary_key=True)
@@ -88,7 +88,7 @@ class FloorManagers(models.Model):
     shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
-    
+
     #profile_pic = models.ImageField()
 
     def __str__(self):
@@ -101,7 +101,7 @@ class Shufflers(models.Model):
     shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
-    
+
     #profile_pic = models.ImageField()
 
 
@@ -119,7 +119,7 @@ class ExtraShifts(models.Model):
     create_at = models.DateTimeField(auto_now_add=True) # when this extra created
     update_at = models.DateTimeField(auto_now_add=True) # when this extra updated
     priority_list=(("Normal","Normal"),("Urgent","Urgent"))
-    priority = models.CharField(choices=priority_list,default='Normal',max_length=12) 
+    priority = models.CharField(choices=priority_list,default='Normal',max_length=12)
     quantity = models.IntegerField(default=1)
 
     def __str__ (self):
@@ -135,11 +135,11 @@ class ExtraShiftsOrder(models.Model):
     create_at = models.DateTimeField(auto_now_add=True) # when this extra was take it
     baqimandeextra = models.IntegerField(default=0)
 
-    
+
     def __int__(self):
         return self.id
     # def get_order(self):
-        
+
     #     if self.baqimandeextra > ExtraShifts.quantity:
     #         print("nemishe")
     #     else:
@@ -154,8 +154,7 @@ class ExtraShiftsOrder(models.Model):
 # future : WHEN user add cancleSHift automaticly raise on an Extra !
 
     # only staff can add an EXTRA ( managers and Live supports)
-    # 
+    #
     # check if users have an Extra could be take it
     # after take an extra counter ++
     # dealer can take only one of the ONE Extra
-     

@@ -22,9 +22,9 @@ class UserIDView(APIView):
 class ExtraShiftListView(ListAPIView):
     permission_classes = (AllowAny,)
     serializer_class = ExtraSerialaizer
-    queryset = ExtraShifts.objects.all()
+    queryset = ExtraShifts.objects.all().order_by('id')
 
-# class check(ListAPIView):
-#     def get(self,request,*args, **kwargs):
-        
+# class OrderExtraListView(ListAPIView):
+#     permission_classes =(AllowAny,)
+#     serializer_class = OrderExtraSerialaizer
     
