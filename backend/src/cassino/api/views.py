@@ -24,7 +24,8 @@ class ExtraShiftListView(ListAPIView):
     serializer_class = ExtraSerialaizer
     queryset = ExtraShifts.objects.all().order_by('id')
 
-# class OrderExtraListView(ListAPIView):
-#     permission_classes =(AllowAny,)
-#     serializer_class = OrderExtraSerialaizer
+#just for test
+class OrderExtraListView(ListAPIView):
+     permission_classes =(AllowAny,)
+     #serializer_class = OrderExtraSerialaizer
     
