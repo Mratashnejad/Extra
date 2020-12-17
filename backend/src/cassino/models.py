@@ -40,8 +40,8 @@ class Managers(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return F"{self.user}"
+    def __unicode__(self):
+        return self.user
 
 
 #Staffs it means LIVE SUPPORTS
@@ -52,8 +52,8 @@ class Staffs(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__ (self):
-        return F"{self.user}"
+    def __unicode__(self):
+        return self.user
 
 #shift more important
 class Shifts(models.Model):
@@ -63,8 +63,8 @@ class Shifts(models.Model):
     manager_id = models.ForeignKey(Managers,on_delete=models.CASCADE)
     staff_id = models.ForeignKey(Staffs,on_delete=models.CASCADE)
 
-    def __str__(self):
-        return F"{self.shift_name}"
+    def __unicode__(self):
+        return self.shift_name
 
 #Staffs who working on Tables of dealing cards /Dealer is first items of ONE SHIFT
 class Dealers(models.Model):
@@ -77,8 +77,8 @@ class Dealers(models.Model):
 
     #profile_pic = models.ImageField()
 
-    def __str__(self):
-        return F"{self.user}"
+    def __unicode__(self):
+        return self.user
 
 #people who manages Salons
 class FloorManagers(models.Model):
@@ -91,8 +91,8 @@ class FloorManagers(models.Model):
 
     #profile_pic = models.ImageField()
 
-    def __str__(self):
-        return F"{self.user}"
+    def __unicode__(self):
+        return self.user
 
 # #people who shuffles Cards
 class Shufflers(models.Model):
@@ -105,12 +105,14 @@ class Shufflers(models.Model):
     #profile_pic = models.ImageField()
 
 
-    def __str__ (self):
-        return F"{self.user}"
+    def __unicode__(self):
+        return self.user
 
 
 class ExtraShifts(models.Model):
     id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=100)
+    slug = models.SlugField()
     shift_id = models.ForeignKey(Shifts,on_delete=models.CASCADE)
     language_id = models.ForeignKey(Languages,on_delete=models.CASCADE)
     ExtraShift_Date = models.DateField() # which day ? thay need people to take an extra
@@ -122,36 +124,27 @@ class ExtraShifts(models.Model):
     priority = models.CharField(choices=priority_list,default='Normal',max_length=12)
     quantity = models.IntegerField(default=1)
 
-    def __str__ (self):
-        return  F"{self.shift_id}"
-
-    # def get_absolute_url(self):
-    #     return reverse("cassino:Extra", kwargs={"pk": self.pk})
-
+    def __str__(self):
+        return  self.title
+ 
+ 
 class ExtraShiftsOrder(models.Model):
     id = models.AutoField(primary_key=True)
     shift = models.ForeignKey(ExtraShifts,on_delete=CASCADE)
     dealer = models.ForeignKey(Dealers,on_delete=models.CASCADE,null=True)
     create_at = models.DateTimeField(auto_now_add=True) # when this extra was take it
-    baqimandeextra = models.IntegerField(default=0)
+    ordered = models.BooleanField(default=False)
 
 
     def __int__(self):
         return self.id
-    # def get_order(self):
-
-    #     if self.baqimandeextra > ExtraShifts.quantity:
-    #         print("nemishe")
-    #     else:
-    #         print("mishe extra bardasht")
-    # get_order()
-    # def check_quantity(self):
-    #     if ExtraShifts.quantity == 0:
-    #         raise Error
+  
 
 
 
-# future : WHEN user add cancleSHift automaticly raise on an Extra !
+
+
+# TODO : WHEN user add cancleSHift automaticly raise on an Extra !
 
     # only staff can add an EXTRA ( managers and Live supports)
     #
