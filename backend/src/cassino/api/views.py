@@ -14,7 +14,7 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK,HTTP_400_BAD_REQUEST
 from cassino.models import ExtraShifts,ExtraShiftsOrder,Dealers
 from .serializes import (ExtraSerialaizer,DealersSerialaizer)
-import stripe
+
 
 # stripe.api_key = settings.STRIPE_SECRET_KEY
 
