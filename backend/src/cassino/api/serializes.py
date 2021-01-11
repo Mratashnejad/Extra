@@ -7,8 +7,11 @@ class ExtraSerialaizer(serializers.ModelSerializer):
     class Meta:
         model = ExtraShifts
         fields = "__all__"
+        
 
 class DealersSerialaizer(serializers.ModelSerializer):
     class Meta:
         model = Dealers
         fields = "__all__"
+
+        
