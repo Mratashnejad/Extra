@@ -126,6 +126,9 @@ class ExtraShifts(models.Model):
 
     def __str__(self):
         return  self.title
+    def get_absolute_url(self):
+        return reverse("Extra", kwargs={"id": self.id})
+    
  
  
 class ExtraShiftsOrder(models.Model):
