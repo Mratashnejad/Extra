@@ -50,3 +50,4 @@ class Command(BaseCommand):
                 ExtraShift_Time = generate_public_time()
                 priority        = generate_priority()
                 quantity        = generate_quantity()
+            
