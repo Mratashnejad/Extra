@@ -42,12 +42,12 @@ class Command(BaseCommand):
         file_name = kwargs['file_name']
         with open(f'{file_name}.txt') as file :
             for row in file:
-                title           =  row
-                slug            =  row
-                shift_id        = generate_shift_id()
-                language_id     = generate_language_id()
-                ExtraShift_Date = generate_publish_date()
-                ExtraShift_Time = generate_public_time()
-                priority        = generate_priority()
-                quantity        = generate_quantity()
+                # title           =  row
+                # slug            =  row
+                # shift_id        = generate_shift_id()
+                # language_id     = generate_language_id()
+                # ExtraShift_Date = generate_publish_date()
+                # ExtraShift_Time = generate_public_time()
+                # priority        = generate_priority()
+                # quantity        = generate_quantity()
             
