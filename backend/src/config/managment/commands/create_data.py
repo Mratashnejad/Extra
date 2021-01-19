@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from .cassino.models import Shifts , Dealers , Managers , Languages, ExtraShifts
+from cassino.models import ExtraShifts
 import random
 import datetime
 
