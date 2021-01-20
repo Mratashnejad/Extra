@@ -1,6 +1,6 @@
 from django.db.models import fields
 from rest_framework import serializers
-from cassino.models import ExtraShifts,Dealers
+from app.cassino.models import ExtraShifts,Dealers
 
 
 class ExtraSerialaizer(serializers.ModelSerializer):

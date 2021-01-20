@@ -22,8 +22,8 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #apps
-    'accounts',
-    'cassino',
+    'app.accounts',
+    'app.cassino',
     'config',
     'knox',
   

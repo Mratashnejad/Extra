@@ -1,5 +1,5 @@
 
-from cassino.api.views import ExtrashiftView
+from app.cassino.api.views import ExtrashiftView
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
