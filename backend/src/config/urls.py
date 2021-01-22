@@ -13,6 +13,7 @@ router = routers.DefaultRouter()
 urlpatterns = [
  
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     # path('api/auth/',include('app.accounts.api.urls')),
     path('api/',include('app.cassino.api.urls'))
     
