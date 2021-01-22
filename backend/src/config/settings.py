@@ -65,6 +65,13 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_EMAIL_VERIFICATION = True
+ACCOUNT_EMAIL_REQUIRED = True
+
+
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
 )
@@ -95,9 +102,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
-                # `allauth` needs this from django
-                'django.template.context_processors.request',
             ],
         },
     },
