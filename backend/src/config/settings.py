@@ -22,14 +22,14 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #apps
-    'app.accounts',
+    # 'app.accounts',
     'app.cassino',
     'config',
-    'knox',
   
     # Django sites framework is required
     'rest_auth',
     'rest_framework',
+    'rest_framework.authtoken',
  
     #Providers
     'django.contrib.sites',
@@ -41,9 +41,10 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'knox.auth.TokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
 }
+
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
