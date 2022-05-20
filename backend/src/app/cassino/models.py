@@ -11,7 +11,7 @@ from django.urls import reverse
 ExtraLabelCategory=(
     ('Mo','Morning Shift'),
     ('Mi','Middle Shift'),
-    ('Ni','Night Shift'),
+    ('Ni','Night Shiftt '),
 )
 #this is lable of the Status dealer
 # if dealer is NOT BLOCK can countinue
