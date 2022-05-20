@@ -9,7 +9,7 @@ from django.urls import reverse
 
 
 ExtraLabelCategory=(
-    ('Mo','Morning Shift'),
+    ('Mo','Morning Shifttt'),
     ('Mi','Middle Shift'),
     ('Ni','Night Shift'),
 )
