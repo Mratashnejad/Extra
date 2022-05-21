@@ -9,7 +9,7 @@ from django.urls import reverse
 
 
 ExtraLabelCategory=(
-    ('Mo','Morning Shifttt'),
+    ('Mo','Morning Shiftt'),
     ('Mi','Middle Shift'),
     ('Ni','Night Shift'),
 )
@@ -18,7 +18,7 @@ ExtraLabelCategory=(
 #
 STATUS_LABALE=(
     ('RDY','Ready'),
-    ('RES','Reserve'),
+    ('RES','Reserrve'),
     ('BLK','BLOCK'),
 )
 #ADD DATE TUPLE

@@ -42,7 +42,7 @@ class CustomForm extends React.Component {
             
           })
 
-          .then(res => message.success("Data is Successfuly added"))
+          .then(res => message.success("Data is Successfuly addeda"))
           .catch(error => message.error("somethings is wrong") && console.log(error));
 
       case 'put':
